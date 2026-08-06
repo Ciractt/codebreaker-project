@@ -1,0 +1,51 @@
+:root {
+  --tb-purple: #501098;
+  --tb-violet: #9A23F8;
+  --tb-black: #000000;
+  --tb-white: #FFFFFF;
+  --tb-yellow: #FEE101;
+
+  --ground: #0B0116;
+  --surface: #16042B;
+  --surface-2: #200746;
+
+  --line: rgba(154, 35, 248, 0.28);
+  --line-strong: rgba(154, 35, 248, 0.55);
+
+  --ink: var(--tb-white);
+  --ink-mute: rgba(255, 255, 255, 0.62);
+  --ink-dim: rgba(255, 255, 255, 0.34);
+
+  --slot-empty-bg: rgba(154, 35, 248, 0.06);
+  --slot-empty-border: rgba(154, 35, 248, 0.45);
+  --slot-loose-border: rgba(154, 35, 248, 0.50);
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.5rem;
+  --step-4: 4rem;
+
+  --tracking-label: 0.14em;
+  --tracking-tight: -0.015em;
+
+  --radius-slot: 6px;
+  --radius: 10px;
+  --radius-card: 16px;
+
+  --measure: 34ch;
+
+  --dur-fast: 120ms;
+  --dur-base: 240ms;
+  --dur-slot: 420ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur-base: 1ms;
+    --dur-slot: 1ms;
+  }
+}
