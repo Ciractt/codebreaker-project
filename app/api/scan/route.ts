@@ -2,6 +2,7 @@ import { getAdminClient } from '@/lib/supabase/admin';
 import { checkLocationAvailability, getParticipantProgress } from '@/lib/code';
 import { findOrCreateParticipant, normaliseEmail, recordScan } from '@/lib/participants';
 import { isFlooding } from '@/lib/rate-limit';
+import { clientIp } from '@/lib/request-ip';
 import { writeSession } from '@/lib/session';
 
 /**
@@ -54,8 +55,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded ? forwarded.split(',')[0].trim() : null;
+  const ip = clientIp(request);
   const userAgent = request.headers.get('user-agent');
 
   if (await isFlooding(supabase, ip)) {
