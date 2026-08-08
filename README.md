@@ -62,6 +62,23 @@ them:
 npx vercel --prod
 ```
 
+## Brand assets
+
+`/public/brand` and `/public/offers` are gitignored for the same reason as the
+fonts: they are Taco Bell's assets and this repo is public. Copy them in before
+running:
+
+```
+public/brand/taco-bell-bell-white.png
+public/offers/baja-blast.jpg
+public/offers/crunchy-taco.jpg
+public/offers/cinnamon-twists.jpg
+public/offers/churros.jpg
+```
+
+Missing brand images degrade rather than fail - the header falls back to a text
+wordmark and offer cards fall back to a branded tile.
+
 ## Environment
 
 Copy `.env.example` to `.env.local` and fill it in. `SUPABASE_SERVICE_ROLE_KEY`

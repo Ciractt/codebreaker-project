@@ -66,78 +66,90 @@ export default function OfferCard({ offer }: { offer: Offer }) {
 
   return (
     <div
-      className={`rounded-[var(--radius-card)] border p-5 ${
-        spent ? 'border-[var(--line)] opacity-50' : 'border-[var(--line-strong)]'
+      className={`rounded-[var(--radius-card)] overflow-hidden bg-[var(--surface-solid)] ${
+        spent ? 'opacity-60' : ''
       }`}
     >
-      {!running && <OfferImage src={offer.imageUrl} title={offer.offerTitle} dimmed={spent} />}
+      <OfferImage src={offer.imageUrl} title={offer.offerTitle} dimmed={spent} />
 
-      <p className="label mb-1">Day {offer.dayNumber}</p>
-      <p className="display text-[length:var(--step-1)] mb-1">{offer.offerTitle}</p>
-      {offer.offerDescription && !running && (
-        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-4">
-          {offer.offerDescription}
+      <div className="p-5">
+        <p className="label !text-[var(--ink-on-white-dim)] mb-1">Day {offer.dayNumber}</p>
+        <p className="display text-[length:var(--step-1)] text-[var(--ink-on-white)] mb-1">
+          {offer.offerTitle}
         </p>
-      )}
 
-      {spent && <p className="text-[length:var(--step--1)] text-[var(--ink-dim)]">Used</p>}
-
-      {running && window && (
-        <div className="mt-3">
-          <p
-            className="display text-[length:var(--step-4)] leading-none tabular-nums"
-            aria-live="off"
-          >
-            {clock(left)}
+        {offer.offerDescription && !running && (
+          <p className="text-[length:var(--step--1)] text-[var(--ink-on-white-body)] mb-4">
+            {offer.offerDescription}
           </p>
-          <p className="label mt-2 mb-3">Show this screen to the team</p>
-          <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">
-            Reference {window.code}
-          </p>
-        </div>
-      )}
+        )}
 
-      {!running && !spent && !confirming && (
-        <button
-          type="button"
-          onClick={() => setConfirming(true)}
-          className="mt-2 w-full h-11 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold"
-        >
-          Use this offer
-        </button>
-      )}
+        {spent && (
+          <p className="text-[length:var(--step--1)] text-[var(--ink-on-white-dim)]">Used</p>
+        )}
 
-      {!running && !spent && confirming && (
-        <div className="mt-2">
-          <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-3">
-            Only do this once you&rsquo;re at the counter. You get ten minutes and it
-            won&rsquo;t come back.
-          </p>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              onClick={() => setConfirming(false)}
-              className="flex-1 h-11 rounded-[var(--radius)] border border-[var(--line-strong)] text-[var(--ink)] font-bold"
+        {running && window && (
+          <div className="mt-3">
+            <p
+              className="display text-[length:var(--step-4)] leading-none tabular-nums text-[var(--ink-on-white)]"
+              aria-live="off"
             >
-              Not yet
-            </button>
-            <button
-              type="button"
-              onClick={activate}
-              disabled={busy}
-              className="flex-1 h-11 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)]"
-            >
-              {busy ? 'Starting\u2026' : 'Start the timer'}
-            </button>
+              {clock(left)}
+            </p>
+            <p className="label !text-[var(--ink-on-white-dim)] mt-2 mb-2">
+              Show this screen to the team
+            </p>
+            <p className="text-[length:var(--step--1)] text-[var(--ink-on-white-body)]">
+              Reference {window.code}
+            </p>
           </div>
-        </div>
-      )}
+        )}
 
-      {error && (
-        <p role="alert" className="notice mt-3">
-          {error}
-        </p>
-      )}
+        {!running && !spent && !confirming && (
+          <button
+            type="button"
+            onClick={() => setConfirming(true)}
+            className="mt-2 w-full h-11 rounded-[var(--radius)] bg-[var(--tb-purple)] text-[var(--tb-white)] font-bold"
+          >
+            Use this offer
+          </button>
+        )}
+
+        {!running && !spent && confirming && (
+          <div className="mt-2">
+            <p className="text-[length:var(--step--1)] text-[var(--ink-on-white-body)] mb-3">
+              Only do this once you&rsquo;re at the counter. You get ten minutes and it
+              won&rsquo;t come back.
+            </p>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => setConfirming(false)}
+                className="flex-1 h-11 rounded-[var(--radius)] border border-[var(--line-on-white)] text-[var(--ink-on-white)] font-bold"
+              >
+                Not yet
+              </button>
+              <button
+                type="button"
+                onClick={activate}
+                disabled={busy}
+                className="flex-1 h-11 rounded-[var(--radius)] bg-[var(--tb-purple)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+              >
+                {busy ? 'Starting\u2026' : 'Start the timer'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {error && (
+          <p
+            role="alert"
+            className="mt-3 text-[length:var(--step--1)] text-[var(--ink-on-white)] border-l-[3px] border-[var(--tb-purple)] pl-3"
+          >
+            {error}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

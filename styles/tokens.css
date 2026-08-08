@@ -30,6 +30,9 @@
   --ink-mute: rgba(255, 255, 255, 0.76);
   --ink-dim: rgba(255, 255, 255, 0.55);
   --ink-on-white: var(--tb-purple);
+  --ink-on-white-body: rgba(17, 3, 33, 0.78);
+  --ink-on-white-dim: rgba(17, 3, 33, 0.50);
+  --line-on-white: rgba(17, 3, 33, 0.12);
 
   /* --- Code strip -----------------------------------------------------
      A known digit is solid white on the deep ground: filled reads as

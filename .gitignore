@@ -53,3 +53,4 @@ supabase/.temp
 
 # brand assets - trademarked, and this repo is public
 /public/brand/*
+/public/offers/*

@@ -1,7 +1,7 @@
 /**
- * Offer artwork. Real product shots go in `locations.offer_image_url` once
- * Taco Bell send them; until then this renders a branded tile rather than a
- * grey box, so the layout is honest about its final proportions.
+ * Offer artwork. Taco Bell's product shots are 1370x650 on a near-white set,
+ * which is why the card around this is white — a pale photo on a translucent
+ * purple panel reads as a mistake rather than a choice.
  */
 export default function OfferImage({
   src,
@@ -18,9 +18,9 @@ export default function OfferImage({
       <img
         src={src}
         alt={title}
-        className={`w-full aspect-[16/9] object-cover rounded-[var(--radius)] mb-4 ${
-          dimmed ? 'grayscale' : ''
-        }`}
+        width={900}
+        height={427}
+        className={`w-full aspect-[137/65] object-cover ${dimmed ? 'grayscale opacity-70' : ''}`}
       />
     );
   }
@@ -28,17 +28,11 @@ export default function OfferImage({
   return (
     <div
       aria-hidden="true"
-      className="w-full aspect-[16/9] rounded-[var(--radius)] mb-4 flex items-center justify-center overflow-hidden"
-      style={{
-        background: `linear-gradient(135deg, var(--ground-deepest), var(--tb-violet))`,
-      }}
+      className="w-full aspect-[137/65] flex items-center justify-center overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, var(--ground-deepest), var(--tb-violet))' }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/brand/taco-bell-bell-white.png"
-        alt=""
-        className="h-[60%] w-auto opacity-15"
-      />
+      <img src="/brand/taco-bell-bell-white.png" alt="" className="h-[55%] w-auto opacity-20" />
     </div>
   );
 }

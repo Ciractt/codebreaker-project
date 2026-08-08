@@ -34,7 +34,7 @@ export default async function OffersPage() {
           Start one at the counter, not before. Ten minutes each, one use only.
         </p>
 
-        <ul className="list-none p-0 m-0 flex flex-col gap-4">
+        <ul className="list-none p-0 m-0 flex flex-col gap-5">
           {offers.map((offer) => (
             <li key={offer.scanId}>
               <OfferCard offer={offer} />
