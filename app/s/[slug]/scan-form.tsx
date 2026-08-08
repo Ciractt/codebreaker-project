@@ -60,7 +60,7 @@ export default function ScanForm({ slug }: { slug: string }) {
 
   return (
     <div>
-      <p className="label mb-4">Code breaker &middot; Darlington</p>
+      <p className="label mb-4">Darlington</p>
 
       <h1 className="display text-[var(--step-3)] mb-3">You found one.</h1>
       <p className="text-[var(--ink-mute)] mb-8 max-w-[var(--measure)]">
@@ -95,7 +95,7 @@ export default function ScanForm({ slug }: { slug: string }) {
         type="button"
         onClick={submit}
         disabled={!email || status === 'sending'}
-        className="w-full h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+        className="w-full h-12 rounded-[var(--radius)] font-bold transition-colors bg-[var(--tb-violet)] text-[var(--tb-white)] disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)] disabled:border disabled:border-[var(--line)]"
       >
         {status === 'sending' ? 'Checking\u2026' : 'Get my numbers'}
       </button>
