@@ -21,7 +21,7 @@ export default function StaffNav({ role, email }: { role: StaffRole; email: stri
     { href: '/staff/campaign', label: 'Campaign', superOnly: true },
     { href: '/staff/promos', label: 'Promo', superOnly: true },
     { href: '/staff/qr', label: 'QR', superOnly: true },
-    { href: '/staff/team', label: 'Team', superOnly: true },
+    { href: '/staff/team', label: 'Team', superOnly: false },
   ].filter((tab) => !tab.superOnly || role === 'super_admin');
 
   async function signOut() {

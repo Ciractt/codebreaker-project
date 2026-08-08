@@ -83,3 +83,18 @@ export async function getOfferTakeup(supabase: SupabaseClient): Promise<Takeup[]
   const { data } = await supabase.rpc('admin_offer_takeup');
   return data ?? [];
 }
+
+export interface TeamMember {
+  user_id: string;
+  email: string;
+  role: 'admin' | 'super_admin';
+  display_name: string | null;
+  store: string | null;
+  created_at: string;
+  last_sign_in: string | null;
+}
+
+export async function getTeam(supabase: SupabaseClient): Promise<TeamMember[]> {
+  const { data } = await supabase.rpc('admin_team');
+  return data ?? [];
+}

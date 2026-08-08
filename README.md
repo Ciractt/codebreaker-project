@@ -86,6 +86,14 @@ Copy `.env.example` to `.env.local` and fill it in. `SUPABASE_SERVICE_ROLE_KEY`
 bypasses row level security — it is server-only and must never gain a
 `NEXT_PUBLIC_` prefix.
 
+## Staff accounts
+
+Created from the admin under Team. There is no self-signup and no public sign-up
+page. Creating an account issues a temporary password shown once to whoever
+created it — Supabase's built-in email service is rate limited and not something
+to depend on during an opening week, so passwords are handed over directly and
+changed by the new user at the sign-in page.
+
 ## Database
 
 Migrations live in `supabase/migrations/`. Apply with `npx supabase db push`.
