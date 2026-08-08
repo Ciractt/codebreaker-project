@@ -16,7 +16,7 @@ export default function SiteHeader() {
           aria-label="Code Breaker home"
           className="flex flex-col items-center gap-2"
         >
-          <BrandMark size={46} />
+          <BrandMark size={76} />
           <span className="label !text-[var(--ink)]">Code breaker</span>
         </Link>
       </div>
