@@ -17,7 +17,7 @@ export default function SiteHeader() {
           className="flex flex-col items-center gap-2"
         >
           <BrandMark size={76} />
-          <span className="label !text-[var(--ink)]">Code breaker</span>
+          <span className="label !text-[var(--ink)]">Code breaker &middot; Darlington</span>
         </Link>
       </div>
     </header>

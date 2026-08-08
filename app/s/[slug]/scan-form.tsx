@@ -60,8 +60,6 @@ export default function ScanForm({ slug }: { slug: string }) {
 
   return (
     <div>
-      <p className="label mb-4">Darlington</p>
-
       <h1 className="display text-[length:var(--step-3)] mb-3">You found one.</h1>
       <p className="text-[var(--ink-mute)] mb-8 max-w-[var(--measure)]">
         Drop your email in and we&rsquo;ll hand over your two numbers, plus something free to pick

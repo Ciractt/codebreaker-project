@@ -3,8 +3,6 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="flex-1 px-5 py-10 mx-auto w-full max-w-md">
-      <p className="label mb-5">Code breaker &middot; Darlington</p>
-
       <h1 className="display text-[length:var(--step-3)] mb-4">
         Eight numbers.
         <br />
