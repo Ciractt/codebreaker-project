@@ -16,6 +16,7 @@ export interface Offer {
   redemptionCode: string;
   offerTitle: string;
   offerDescription: string | null;
+  imageUrl: string | null;
   locationName: string;
   dayNumber: number;
   startedAt: string | null;
@@ -30,7 +31,7 @@ export async function getOffers(
   const { data, error } = await supabase
     .from('scans')
     .select(
-      'id, location_id, locations(offer_title, offer_description, location_name, day_number, sort_order), redemptions(redemption_code, started_at, expires_at, redeemed_at)',
+      'id, location_id, locations(offer_title, offer_description, offer_image_url, location_name, day_number, sort_order), redemptions(redemption_code, started_at, expires_at, redeemed_at)',
     )
     .eq('participant_id', participantId);
 
@@ -47,6 +48,7 @@ export async function getOffers(
         redemptionCode: redemption.redemption_code as string,
         offerTitle: location.offer_title as string,
         offerDescription: (location.offer_description as string | null) ?? null,
+        imageUrl: (location.offer_image_url as string | null) ?? null,
         locationName: location.location_name as string,
         dayNumber: location.day_number as number,
         startedAt: (redemption.started_at as string | null) ?? null,

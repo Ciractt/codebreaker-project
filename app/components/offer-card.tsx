@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { Offer } from '@/lib/offers';
+import OfferImage from './offer-image';
 
 function clock(seconds: number): string {
   const m = Math.floor(seconds / 60);
@@ -69,6 +70,8 @@ export default function OfferCard({ offer }: { offer: Offer }) {
         spent ? 'border-[var(--line)] opacity-50' : 'border-[var(--line-strong)]'
       }`}
     >
+      {!running && <OfferImage src={offer.imageUrl} title={offer.offerTitle} dimmed={spent} />}
+
       <p className="label mb-1">Day {offer.dayNumber}</p>
       <p className="display text-[var(--step-1)] mb-1">{offer.offerTitle}</p>
       {offer.offerDescription && !running && (
