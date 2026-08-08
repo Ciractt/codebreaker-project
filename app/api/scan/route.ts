@@ -1,6 +1,7 @@
 import { getAdminClient } from '@/lib/supabase/admin';
 import { checkLocationAvailability, getParticipantProgress } from '@/lib/code';
 import { findOrCreateParticipant, normaliseEmail, recordScan } from '@/lib/participants';
+import { isFlooding } from '@/lib/rate-limit';
 import { writeSession } from '@/lib/session';
 
 /**
@@ -56,6 +57,13 @@ export async function POST(request: Request) {
   const forwarded = request.headers.get('x-forwarded-for');
   const ip = forwarded ? forwarded.split(',')[0].trim() : null;
   const userAgent = request.headers.get('user-agent');
+
+  if (await isFlooding(supabase, ip)) {
+    return Response.json(
+      { error: 'Too many scans from this connection. Try again in a bit.' },
+      { status: 429 },
+    );
+  }
 
   try {
     const participantId = await findOrCreateParticipant(supabase, email);

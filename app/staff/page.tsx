@@ -58,12 +58,14 @@ export default async function StaffStatsPage() {
   const openHours = Array.from({ length: 17 }, (_, i) => i + 7); // 07:00–23:00
 
   const dailyData = daily.map((d) => ({
+    id: d.day,
     label: new Date(d.day).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }),
     value: d.scans,
   }));
 
   const hourlyData = openHours.map((hour) => ({
-    label: hour % 3 === 0 ? String(hour) : '',
+    id: `h${hour}`,
+    label: hour % 3 === 0 ? `${hour}:00` : '',
     value: hourMap.get(hour) ?? 0,
   }));
 

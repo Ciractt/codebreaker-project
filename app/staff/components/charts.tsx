@@ -40,7 +40,9 @@ export function ColumnChart({
   height = 160,
   emptyLabel = 'Nothing yet.',
 }: {
-  data: { label: string; value: number; accent?: string }[];
+  /** `id` is the React key. `label` is what's printed and may be blank — the
+   *  hourly chart only labels every third column, so labels are not unique. */
+  data: { id: string; label: string; value: number; accent?: string }[];
   height?: number;
   emptyLabel?: string;
 }) {
@@ -53,7 +55,7 @@ export function ColumnChart({
   return (
     <ul className="list-none p-0 m-0 flex items-end gap-1.5" style={{ height }}>
       {data.map((d) => (
-        <li key={d.label} className="flex-1 h-full flex flex-col justify-end items-center gap-2">
+        <li key={d.id} className="flex-1 h-full flex flex-col justify-end items-center gap-2">
           <span className="text-[length:var(--step--1)] text-[var(--ink-dim)] tabular-nums leading-none">
             {d.value > 0 ? d.value : ''}
           </span>
@@ -64,7 +66,7 @@ export function ColumnChart({
               minHeight: d.value > 0 ? 3 : 2,
               background: d.value > 0 ? (d.accent ?? 'var(--data-strong)') : 'var(--data-track)',
             }}
-            title={`${d.label}: ${d.value}`}
+            title={`${d.id}: ${d.value}`}
           />
           <span className="text-[length:var(--step--1)] text-[var(--ink-dim)] tabular-nums leading-none">
             {d.label}
