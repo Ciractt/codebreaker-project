@@ -33,12 +33,12 @@ export default function StaffNav({ role, email }: { role: StaffRole; email: stri
             type="button"
             onClick={signOut}
             disabled={busy}
-            className="text-[var(--step--1)] text-[var(--ink-dim)] underline underline-offset-4"
+            className="text-[length:var(--step--1)] text-[var(--ink-dim)] underline underline-offset-4"
           >
             Sign out
           </button>
         </div>
-        <p className="text-[var(--step--1)] text-[var(--ink-dim)] mb-4">{email}</p>
+        <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mb-4">{email}</p>
         <nav className="flex gap-4 -mb-px overflow-x-auto">
           {tabs.map((tab) => {
             const active = pathname === tab.href || pathname.startsWith(`${tab.href}/`);

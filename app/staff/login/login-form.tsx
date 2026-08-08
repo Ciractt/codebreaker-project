@@ -83,7 +83,7 @@ export default function StaffLoginForm() {
 
       <Link
         href="/staff/forgot"
-        className="block mt-6 text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
+        className="block mt-6 text-[length:var(--step--1)] text-[var(--ink)] underline underline-offset-4"
       >
         Forgotten your password?
       </Link>

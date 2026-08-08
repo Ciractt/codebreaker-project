@@ -80,7 +80,7 @@ export default function CampaignForm({
 
   return (
     <div>
-      <h1 className="display text-[var(--step-2)] mb-7">Campaign</h1>
+      <h1 className="display text-[length:var(--step-2)] mb-7">Campaign</h1>
 
       <div className="flex flex-col gap-5 mb-10">
         <div>
@@ -142,7 +142,7 @@ export default function CampaignForm({
           {busy ? 'Saving\u2026' : 'Save changes'}
         </button>
 
-        {message && <p className="text-[var(--step--1)] text-[var(--ink-mute)]">{message}</p>}
+        {message && <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">{message}</p>}
         {error && (
           <p role="alert" className="notice">
             {error}
@@ -154,18 +154,18 @@ export default function CampaignForm({
         <h2 className="label mb-3">The safe code</h2>
 
         <div className="rounded-[var(--radius)] border border-[var(--line)] p-4 mb-5">
-          <p className="display text-[var(--step-2)] tracking-[0.14em] mb-3 tabular-nums">
+          <p className="display text-[length:var(--step-2)] tracking-[0.14em] mb-3 tabular-nums">
             {showCode ? (safeCode ?? 'not set') : '\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022'}
           </p>
           <button
             type="button"
             onClick={() => setShowCode((v) => !v)}
-            className="text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
+            className="text-[length:var(--step--1)] text-[var(--ink)] underline underline-offset-4"
           >
             {showCode ? 'Hide' : 'Show the code'}
           </button>
           {rotatedAt && (
-            <p className="text-[var(--step--1)] text-[var(--ink-dim)] mt-3">
+            <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mt-3">
               Set {new Date(rotatedAt).toLocaleDateString('en-GB')}
             </p>
           )}
@@ -189,7 +189,7 @@ export default function CampaignForm({
               onChange={(e) => setUnlocked(e.target.checked)}
               className="w-5 h-5 mt-0.5 accent-[var(--tb-white)] shrink-0"
             />
-            <span className="text-[var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
+            <span className="text-[length:var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
               The campaign is live. Tick to unlock rotating the code.
             </span>
           </label>
@@ -203,7 +203,7 @@ export default function CampaignForm({
         >
           Rotate the code
         </button>
-        <p className="text-[var(--step--1)] text-[var(--ink-dim)] mt-3 leading-relaxed">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mt-3 leading-relaxed">
           Only if the numbers have leaked. {affected}{' '}
           {affected === 1 ? 'player is' : 'players are'} holding numbers from the current one, and
           rotating makes every one of them wrong. You&rsquo;d also need to reset the physical safe.
@@ -217,8 +217,8 @@ export default function CampaignForm({
           className="fixed inset-0 z-30 bg-black/70 flex items-end sm:items-center justify-center p-5"
         >
           <div className="w-full max-w-md rounded-[var(--radius-card)] border border-[var(--line-strong)] bg-[var(--ground-deep)] p-6">
-            <h2 className="display text-[var(--step-1)] mb-3">Hold on</h2>
-            <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-6 leading-relaxed">
+            <h2 className="display text-[length:var(--step-1)] mb-3">Hold on</h2>
+            <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-6 leading-relaxed">
               {confirm.message}
             </p>
             <div className="flex gap-3">

@@ -20,8 +20,8 @@ export default async function LocationsPage() {
 
   return (
     <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
-      <h1 className="display text-[var(--step-2)] mb-2">The four codes</h1>
-      <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-7">
+      <h1 className="display text-[length:var(--step-2)] mb-2">The four codes</h1>
+      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7">
         Between them they cover all eight positions. Only the first one tells players where its
         numbers sit.
       </p>
@@ -35,13 +35,13 @@ export default async function LocationsPage() {
             >
               <div className="flex items-baseline justify-between gap-3 mb-1">
                 <p className="label">Day {location.day_number}</p>
-                <p className="text-[var(--step--1)] text-[var(--ink-dim)] tabular-nums">
+                <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] tabular-nums">
                   Positions {(location.digit_positions as number[]).join(' & ')}
                   {location.reveals_positions ? ' · shown' : ''}
                 </p>
               </div>
               <p className="mb-1">{location.location_name}</p>
-              <p className="text-[var(--step--1)] text-[var(--ink-mute)]">
+              <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">
                 {location.offer_title}
                 {!location.active && ' · switched off'}
               </p>

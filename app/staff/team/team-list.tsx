@@ -46,7 +46,7 @@ export default function TeamList({ team }: { team: Member[] }) {
             className="rounded-[var(--radius)] border border-[var(--line)] p-4"
           >
             <p className="mb-1">{member.display_name ?? 'Unnamed'}</p>
-            <p className="text-[var(--step--1)] text-[var(--ink-dim)] mb-3">
+            <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mb-3">
               {member.store ?? 'No store set'}
             </p>
             <div className="flex gap-2">

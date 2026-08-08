@@ -7,19 +7,19 @@ export default function SiteFooter() {
         <nav className="flex gap-5 mb-4">
           <Link
             href="/privacy"
-            className="text-[var(--step--1)] text-[var(--ink-mute)] underline underline-offset-4"
+            className="text-[length:var(--step--1)] text-[var(--ink-mute)] underline underline-offset-4"
           >
             Privacy
           </Link>
           <Link
             href="/terms"
-            className="text-[var(--step--1)] text-[var(--ink-mute)] underline underline-offset-4"
+            className="text-[length:var(--step--1)] text-[var(--ink-mute)] underline underline-offset-4"
           >
             Terms
           </Link>
         </nav>
         {/* TODO: confirm the promoter name and address with QFM before launch. */}
-        <p className="text-[var(--step--1)] text-[var(--ink-dim)] leading-relaxed">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] leading-relaxed">
           Promoted by QFM Group. Taco Bell and the bell logo are trademarks of Taco Bell Corp.
         </p>
       </div>

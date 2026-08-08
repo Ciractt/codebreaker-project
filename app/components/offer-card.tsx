@@ -73,25 +73,25 @@ export default function OfferCard({ offer }: { offer: Offer }) {
       {!running && <OfferImage src={offer.imageUrl} title={offer.offerTitle} dimmed={spent} />}
 
       <p className="label mb-1">Day {offer.dayNumber}</p>
-      <p className="display text-[var(--step-1)] mb-1">{offer.offerTitle}</p>
+      <p className="display text-[length:var(--step-1)] mb-1">{offer.offerTitle}</p>
       {offer.offerDescription && !running && (
-        <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-4">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-4">
           {offer.offerDescription}
         </p>
       )}
 
-      {spent && <p className="text-[var(--step--1)] text-[var(--ink-dim)]">Used</p>}
+      {spent && <p className="text-[length:var(--step--1)] text-[var(--ink-dim)]">Used</p>}
 
       {running && window && (
         <div className="mt-3">
           <p
-            className="display text-[var(--step-4)] leading-none tabular-nums"
+            className="display text-[length:var(--step-4)] leading-none tabular-nums"
             aria-live="off"
           >
             {clock(left)}
           </p>
           <p className="label mt-2 mb-3">Show this screen to the team</p>
-          <p className="text-[var(--step--1)] text-[var(--ink-mute)]">
+          <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">
             Reference {window.code}
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function OfferCard({ offer }: { offer: Offer }) {
 
       {!running && !spent && confirming && (
         <div className="mt-2">
-          <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-3">
+          <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-3">
             Only do this once you&rsquo;re at the counter. You get ten minutes and it
             won&rsquo;t come back.
           </p>

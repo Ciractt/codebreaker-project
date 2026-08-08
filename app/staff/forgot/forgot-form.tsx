@@ -38,7 +38,7 @@ export default function ForgotForm() {
         </p>
         <Link
           href="/staff/login"
-          className="text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
+          className="text-[length:var(--step--1)] text-[var(--ink)] underline underline-offset-4"
         >
           Back to sign in
         </Link>
@@ -78,7 +78,7 @@ export default function ForgotForm() {
 
       <Link
         href="/staff/login"
-        className="block mt-6 text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
+        className="block mt-6 text-[length:var(--step--1)] text-[var(--ink)] underline underline-offset-4"
       >
         Back to sign in
       </Link>

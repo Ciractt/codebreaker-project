@@ -89,8 +89,8 @@ export default function LocationForm({
   return (
     <div>
       <p className="label mb-2">Day {location.day_number}</p>
-      <h1 className="display text-[var(--step-2)] mb-1">{location.location_name}</h1>
-      <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-7 tabular-nums">
+      <h1 className="display text-[length:var(--step-2)] mb-1">{location.location_name}</h1>
+      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7 tabular-nums">
         Positions {location.digit_positions.join(' & ')}
         {location.reveals_positions ? ', shown to players' : ', hidden'} &middot; {affected}{' '}
         {affected === 1 ? 'player has' : 'players have'} scanned it
@@ -98,7 +98,7 @@ export default function LocationForm({
 
       <section className="rounded-[var(--radius)] border border-[var(--line-strong)] p-4 mb-8">
         <h2 className="label mb-2">{location.active ? 'In play' : 'Out of play'}</h2>
-        <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-4 leading-relaxed">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-4 leading-relaxed">
           {location.active
             ? 'Scanning this code works. Take it out if it has leaked or the spot is gone.'
             : 'Scanning this code tells people it is not in play. Nobody loses numbers they already have.'}
@@ -208,7 +208,7 @@ export default function LocationForm({
           {busy ? 'Saving\u2026' : 'Save changes'}
         </button>
 
-        {message && <p className="text-[var(--step--1)] text-[var(--ink-mute)]">{message}</p>}
+        {message && <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">{message}</p>}
         {error && (
           <p role="alert" className="notice">
             {error}
@@ -218,7 +218,7 @@ export default function LocationForm({
 
       <section className="mt-10 pt-6 border-t border-[var(--line)]">
         <h2 className="label mb-3">The link behind the QR code</h2>
-        <p className="text-[var(--step--1)] text-[var(--ink-mute)] break-all mb-4">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] break-all mb-4">
           {siteUrl}/s/{location.slug}
         </p>
         {isLive && (
@@ -229,7 +229,7 @@ export default function LocationForm({
               onChange={(e) => setUnlocked(e.target.checked)}
               className="w-5 h-5 mt-0.5 accent-[var(--tb-white)] shrink-0"
             />
-            <span className="text-[var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
+            <span className="text-[length:var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
               The campaign is live. Tick to unlock changing the link.
             </span>
           </label>
@@ -243,7 +243,7 @@ export default function LocationForm({
         >
           Generate a new link
         </button>
-        <p className="text-[var(--step--1)] text-[var(--ink-dim)] mt-3 leading-relaxed">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mt-3 leading-relaxed">
           Only if this one has leaked. Every QR code already printed for it stops working, and you
           would need to reprint before anyone could scan it again.
         </p>
@@ -256,8 +256,8 @@ export default function LocationForm({
           className="fixed inset-0 z-30 bg-black/70 flex items-end sm:items-center justify-center p-5"
         >
           <div className="w-full max-w-md rounded-[var(--radius-card)] border border-[var(--line-strong)] bg-[var(--ground-deep)] p-6">
-            <h2 className="display text-[var(--step-1)] mb-3">Hold on</h2>
-            <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-6 leading-relaxed">
+            <h2 className="display text-[length:var(--step-1)] mb-3">Hold on</h2>
+            <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-6 leading-relaxed">
               {confirm.message}
             </p>
             <div className="flex gap-3">

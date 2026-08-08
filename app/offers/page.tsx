@@ -27,10 +27,10 @@ export default async function OffersPage() {
     <>
       <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
         <p className="label mb-4">Your offers</p>
-        <h1 className="display text-[var(--step-2)] mb-2">
+        <h1 className="display text-[length:var(--step-2)] mb-2">
           {offers.length === 1 ? 'One thing' : `${offers.length} things`} to claim
         </h1>
-        <p className="text-[var(--ink-mute)] text-[var(--step--1)] mb-7">
+        <p className="text-[var(--ink-mute)] text-[length:var(--step--1)] mb-7">
           Start one at the counter, not before. Ten minutes each, one use only.
         </p>
 

@@ -62,7 +62,7 @@ export default function ScanForm({ slug }: { slug: string }) {
     <div>
       <p className="label mb-4">Darlington</p>
 
-      <h1 className="display text-[var(--step-3)] mb-3">You found one.</h1>
+      <h1 className="display text-[length:var(--step-3)] mb-3">You found one.</h1>
       <p className="text-[var(--ink-mute)] mb-8 max-w-[var(--measure)]">
         Drop your email in and we&rsquo;ll hand over your two numbers, plus something free to pick
         up in store.
@@ -100,7 +100,7 @@ export default function ScanForm({ slug }: { slug: string }) {
         {status === 'sending' ? 'Checking\u2026' : 'Get my numbers'}
       </button>
 
-      <p className="text-[var(--step--1)] text-[var(--ink-dim)] mt-6 leading-relaxed">
+      <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mt-6 leading-relaxed">
         We use your email to hold your progress and nothing else. No marketing, no emails from us.
       </p>
     </div>

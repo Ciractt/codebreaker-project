@@ -9,15 +9,15 @@ export default function PrivacyPage() {
   return (
     <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
       <p className="label mb-4">Privacy</p>
-      <h1 className="display text-[var(--step-2)] mb-6">What we do with your email</h1>
+      <h1 className="display text-[length:var(--step-2)] mb-6">What we do with your email</h1>
 
       <div className="rounded-[var(--radius)] border border-[var(--line-strong)] p-4 mb-8">
-        <p className="text-[var(--step--1)] text-[var(--ink-mute)]">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">
           Draft wording, pending legal review. Not final.
         </p>
       </div>
 
-      <div className="flex flex-col gap-5 text-[var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
+      <div className="flex flex-col gap-5 text-[length:var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
         <p>
           Your email address is the only personal detail we ask for. We use it to remember which
           codes you&rsquo;ve found and which offers are still yours to claim, so you can pick up

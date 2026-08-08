@@ -31,10 +31,10 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
 
   return (
     <div>
-      <h1 className="display text-[var(--step-2)] mb-1">
+      <h1 className="display text-[length:var(--step-2)] mb-1">
         {WORDS[progress.scannedCount] ?? progress.scannedCount} of four found
       </h1>
-      <p className="text-[var(--ink-mute)] text-[var(--step--1)] mb-7">
+      <p className="text-[var(--ink-mute)] text-[length:var(--step--1)] mb-7">
         {progress.isComplete
           ? 'That\u2019s all of them. The safe is in the restaurant.'
           : `${REMAINING[progress.totalLocations - progress.scannedCount] ?? ''} still out there.`}
@@ -50,7 +50,7 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
               className={
                 digit === undefined
                   ? 'aspect-[3/4] rounded-[var(--radius-slot)] border border-dashed border-[var(--slot-empty-border)] bg-[var(--slot-empty-bg)]'
-                  : 'aspect-[3/4] rounded-[var(--radius-slot)] bg-[var(--slot-known-bg)] text-[var(--slot-known-ink)] flex items-center justify-center display text-[var(--step-1)]'
+                  : 'aspect-[3/4] rounded-[var(--radius-slot)] bg-[var(--slot-known-bg)] text-[var(--slot-known-ink)] flex items-center justify-center display text-[length:var(--step-1)]'
               }
             >
               {digit === undefined ? (
@@ -67,7 +67,7 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
         {SLOTS.map((slot) => (
           <li
             key={slot}
-            className={`text-center text-[var(--step--1)] ${
+            className={`text-center text-[length:var(--step--1)] ${
               placed.has(slot) ? 'text-[var(--ink)]' : 'text-[var(--ink-dim)]'
             }`}
           >
@@ -84,13 +84,13 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
             {progress.looseNumbers.map((digit, index) => (
               <li
                 key={`${digit}-${index}`}
-                className="flex-1 aspect-square rounded-[var(--radius)] border border-[var(--slot-loose-border)] flex items-center justify-center display text-[var(--step-1)]"
+                className="flex-1 aspect-square rounded-[var(--radius)] border border-[var(--slot-loose-border)] flex items-center justify-center display text-[length:var(--step-1)]"
               >
                 {digit}
               </li>
             ))}
           </ul>
-          <p className="text-[var(--step--1)] text-[var(--ink-mute)]">
+          <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">
             Where these go is yours to work out.
           </p>
         </section>

@@ -12,7 +12,7 @@ export default function EmptyState({
   return (
     <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
       <p className="label mb-4">{eyebrow}</p>
-      <h1 className="display text-[var(--step-2)] mb-3">{heading}</h1>
+      <h1 className="display text-[length:var(--step-2)] mb-3">{heading}</h1>
       <p className="text-[var(--ink-mute)] mb-8 max-w-[var(--measure)]">{body}</p>
       <Link
         href="/"
