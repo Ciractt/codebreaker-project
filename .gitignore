@@ -50,3 +50,6 @@ supabase/.temp
 /app/fonts/*.woff2
 /app/fonts/*.woff
 /app/fonts/*.ttf
+
+# brand assets - trademarked, and this repo is public
+/public/brand/*

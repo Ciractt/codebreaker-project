@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { gtStandard, gtCondensed, gtExpanded } from './fonts';
+import SiteHeader from './components/site-header';
+import SiteFooter from './components/site-footer';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,7 +23,11 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="en-GB"
       className={`${gtStandard.variable} ${gtCondensed.variable} ${gtExpanded.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
