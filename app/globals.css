@@ -120,3 +120,26 @@ input:-webkit-autofill:focus {
   caret-color: var(--ink);
   transition: background-color 9999s ease-in-out 0s;
 }
+
+/* --- Print ---------------------------------------------------------------
+   The whole site is white on purple, which on paper is a waste of toner and
+   an unscannable QR. Printing is only ever used for the QR sheet, so force
+   black on white and drop the chrome. */
+
+@media print {
+  html,
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  header,
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}

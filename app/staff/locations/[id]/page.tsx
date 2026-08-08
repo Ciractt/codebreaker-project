@@ -2,6 +2,7 @@ import { notFound, redirect } from 'next/navigation';
 import { getStaffClient, getStaffRole } from '@/lib/supabase/staff';
 import { getImpact } from '@/lib/admin';
 import { getCampaignState } from '@/lib/campaign';
+import { qrDataUri, scanUrl } from '@/lib/qr';
 import LocationForm from './location-form';
 
 export const dynamic = 'force-dynamic';
@@ -27,6 +28,7 @@ export default async function LocationPage({ params }: { params: Promise<{ id: s
     getCampaignState(supabase),
   ]);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? '';
+  const qrPreview = await qrDataUri(scanUrl(location.slug as string, siteUrl), 'purple');
 
   return (
     <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
@@ -35,6 +37,7 @@ export default async function LocationPage({ params }: { params: Promise<{ id: s
         affected={affected}
         siteUrl={siteUrl}
         isLive={campaign?.isLive ?? false}
+        qrPreview={qrPreview}
       />
     </main>
   );

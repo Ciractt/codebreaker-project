@@ -30,11 +30,13 @@ export default function LocationForm({
   affected,
   siteUrl,
   isLive,
+  qrPreview,
 }: {
   location: LocationRow;
   affected: number;
   siteUrl: string;
   isLive: boolean;
+  qrPreview: string;
 }) {
   const router = useRouter();
   const [form, setForm] = useState({
@@ -217,7 +219,28 @@ export default function LocationForm({
       </div>
 
       <section className="mt-10 pt-6 border-t border-[var(--line)]">
-        <h2 className="label mb-3">The link behind the QR code</h2>
+        <h2 className="label mb-3">The QR code</h2>
+
+        <div className="rounded-[var(--radius)] bg-[var(--surface-solid)] p-4 mb-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={qrPreview} alt="" className="w-full h-auto" />
+        </div>
+
+        <div className="grid grid-cols-2 gap-2 mb-5">
+          <a
+            href={`/api/staff/qr?id=${location.id}&format=svg&style=purple`}
+            className="h-11 rounded-[var(--radius)] border border-[var(--line-strong)] flex items-center justify-center label !text-[var(--ink)]"
+          >
+            SVG purple
+          </a>
+          <a
+            href={`/api/staff/qr?id=${location.id}&format=svg&style=black`}
+            className="h-11 rounded-[var(--radius)] border border-[var(--line-strong)] flex items-center justify-center label !text-[var(--ink)]"
+          >
+            SVG black
+          </a>
+        </div>
+
         <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] break-all mb-4">
           {siteUrl}/s/{location.slug}
         </p>
