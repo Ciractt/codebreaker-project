@@ -35,7 +35,7 @@ export default function StaffLoginForm() {
   }
 
   const inputClass =
-    'w-full h-12 px-4 rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] placeholder:text-[var(--ink-dim)] mb-3';
+    'w-full h-12 px-4 rounded-[var(--radius)] bg-black/20 border border-[var(--line)] text-[var(--ink)] placeholder:text-[var(--ink-dim)] mb-3';
 
   return (
     <div>
@@ -67,7 +67,7 @@ export default function StaffLoginForm() {
       />
 
       {error && (
-        <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)] mb-3">
+        <p role="alert" className="notice mb-3">
           {error}
         </p>
       )}
@@ -76,14 +76,14 @@ export default function StaffLoginForm() {
         type="button"
         onClick={submit}
         disabled={busy}
-        className="w-full h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+        className="w-full h-12 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)]"
       >
         {busy ? 'Signing in\u2026' : 'Sign in'}
       </button>
 
       <Link
         href="/staff/forgot"
-        className="block mt-6 text-[var(--step--1)] text-[var(--tb-violet)] underline underline-offset-4"
+        className="block mt-6 text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
       >
         Forgotten your password?
       </Link>

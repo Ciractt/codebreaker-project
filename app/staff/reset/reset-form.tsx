@@ -8,7 +8,7 @@ import { getBrowserClient } from '@/lib/supabase/browser';
 type Stage = 'checking' | 'ready' | 'invalid' | 'done';
 
 const field =
-  'w-full h-12 px-4 rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] mb-3';
+  'w-full h-12 px-4 rounded-[var(--radius)] bg-black/20 border border-[var(--line)] text-[var(--ink)] mb-3';
 
 export default function ResetForm() {
   const router = useRouter();
@@ -94,7 +94,7 @@ export default function ResetForm() {
         </p>
         <Link
           href="/staff/forgot"
-          className="inline-flex h-12 px-6 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold items-center justify-center"
+          className="inline-flex h-12 px-6 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold items-center justify-center"
         >
           Send a new one
         </Link>
@@ -108,7 +108,7 @@ export default function ResetForm() {
         <p className="mb-6">That&rsquo;s set. You&rsquo;re signed in.</p>
         <Link
           href="/staff"
-          className="inline-flex h-12 px-6 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold items-center justify-center"
+          className="inline-flex h-12 px-6 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold items-center justify-center"
         >
           Go to the dashboard
         </Link>
@@ -142,7 +142,7 @@ export default function ResetForm() {
       />
 
       {error && (
-        <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)] mb-3">
+        <p role="alert" className="notice mb-3">
           {error}
         </p>
       )}
@@ -151,7 +151,7 @@ export default function ResetForm() {
         type="button"
         onClick={save}
         disabled={busy}
-        className="w-full h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+        className="w-full h-12 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)]"
       >
         {busy ? 'Saving\u2026' : 'Save and sign in'}
       </button>

@@ -49,7 +49,7 @@ export default function StaffNav({ role, email }: { role: StaffRole; email: stri
                 aria-current={active ? 'page' : undefined}
                 className={`label whitespace-nowrap pb-3 border-b-2 ${
                   active
-                    ? '!text-[var(--tb-violet)] border-[var(--tb-violet)]'
+                    ? '!text-[var(--ink)] border-[var(--tb-white)]'
                     : 'border-transparent'
                 }`}
               >

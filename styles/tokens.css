@@ -1,24 +1,50 @@
 :root {
+  /* --- Brand, exact. Do not alter these five. ------------------------- */
   --tb-purple: #501098;
   --tb-violet: #9A23F8;
   --tb-black: #000000;
   --tb-white: #FFFFFF;
+
+  /* RESERVED. One use only: the safe-cracked state. */
   --tb-yellow: #FEE101;
 
-  --ground: #0B0116;
-  --surface: #16042B;
-  --surface-2: #200746;
+  /* --- Ground ---------------------------------------------------------
+     The brand purple itself, like the Taco Bell app, rather than a
+     near-black. White on it is 11.2:1.
 
-  --line: rgba(154, 35, 248, 0.28);
-  --line-strong: rgba(154, 35, 248, 0.55);
+     The consequence: violet on purple is 2.1:1, so violet is a FILL colour
+     here and never a text or border colour. White carries all the type. */
+  --ground: var(--tb-purple);
+  --ground-deep: #3D0B75;      /* headers, bottom nav — same hue, more weight */
+  --ground-deepest: #2A0752;   /* the code strip's own ground                */
 
+  --surface: rgba(255, 255, 255, 0.10);
+  --surface-2: rgba(255, 255, 255, 0.16);
+  --surface-solid: var(--tb-white);   /* product cards, app-style            */
+
+  --line: rgba(255, 255, 255, 0.24);
+  --line-strong: rgba(255, 255, 255, 0.55);
+
+  /* --- Ink ------------------------------------------------------------ */
   --ink: var(--tb-white);
-  --ink-mute: rgba(255, 255, 255, 0.62);
-  --ink-dim: rgba(255, 255, 255, 0.34);
+  --ink-mute: rgba(255, 255, 255, 0.76);
+  --ink-dim: rgba(255, 255, 255, 0.55);
+  --ink-on-white: var(--tb-purple);
 
-  --slot-empty-bg: rgba(154, 35, 248, 0.06);
-  --slot-empty-border: rgba(154, 35, 248, 0.45);
-  --slot-loose-border: rgba(154, 35, 248, 0.50);
+  /* --- Code strip -----------------------------------------------------
+     A known digit is solid white on the deep ground: filled reads as
+     certain, empty reads as missing. Violet would sit too close to the
+     ground to carry a numeral. */
+  --slot-known-bg: var(--tb-white);
+  --slot-known-ink: var(--tb-purple);
+  --slot-empty-bg: rgba(0, 0, 0, 0.18);
+  --slot-empty-border: rgba(255, 255, 255, 0.40);
+  --slot-loose-border: rgba(255, 255, 255, 0.55);
+
+  /* --- Type ----------------------------------------------------------- */
+  --font-display: 'GT America Expanded', 'Helvetica Neue', Arial, sans-serif;
+  --font-label: 'GT America Condensed', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'GT America', 'Helvetica Neue', Arial, sans-serif;
 
   --step--1: 0.8125rem;
   --step-0: 1rem;
@@ -30,12 +56,14 @@
   --tracking-label: 0.14em;
   --tracking-tight: -0.015em;
 
+  /* --- Layout --------------------------------------------------------- */
   --radius-slot: 6px;
   --radius: 10px;
   --radius-card: 16px;
 
   --measure: 34ch;
 
+  /* --- Motion --------------------------------------------------------- */
   --dur-fast: 120ms;
   --dur-base: 240ms;
   --dur-slot: 420ms;

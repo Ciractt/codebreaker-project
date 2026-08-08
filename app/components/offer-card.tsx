@@ -101,7 +101,7 @@ export default function OfferCard({ offer }: { offer: Offer }) {
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="mt-2 w-full h-11 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold"
+          className="mt-2 w-full h-11 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold"
         >
           Use this offer
         </button>
@@ -125,7 +125,7 @@ export default function OfferCard({ offer }: { offer: Offer }) {
               type="button"
               onClick={activate}
               disabled={busy}
-              className="flex-1 h-11 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+              className="flex-1 h-11 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)]"
             >
               {busy ? 'Starting\u2026' : 'Start the timer'}
             </button>
@@ -134,7 +134,7 @@ export default function OfferCard({ offer }: { offer: Offer }) {
       )}
 
       {error && (
-        <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)] mt-3">
+        <p role="alert" className="notice mt-3">
           {error}
         </p>
       )}

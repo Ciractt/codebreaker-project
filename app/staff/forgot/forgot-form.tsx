@@ -38,7 +38,7 @@ export default function ForgotForm() {
         </p>
         <Link
           href="/staff/login"
-          className="text-[var(--step--1)] text-[var(--tb-violet)] underline underline-offset-4"
+          className="text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
         >
           Back to sign in
         </Link>
@@ -58,11 +58,11 @@ export default function ForgotForm() {
         onKeyDown={(e) => {
           if (e.key === 'Enter' && email) send();
         }}
-        className="w-full h-12 px-4 rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] mb-3"
+        className="w-full h-12 px-4 rounded-[var(--radius)] bg-black/20 border border-[var(--line)] text-[var(--ink)] mb-3"
       />
 
       {error && (
-        <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)] mb-3">
+        <p role="alert" className="notice mb-3">
           {error}
         </p>
       )}
@@ -71,14 +71,14 @@ export default function ForgotForm() {
         type="button"
         onClick={send}
         disabled={busy || !email}
-        className="w-full h-12 rounded-[var(--radius)] font-bold bg-[var(--tb-violet)] text-[var(--tb-white)] disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)] disabled:border disabled:border-[var(--line)]"
+        className="w-full h-12 rounded-[var(--radius)] font-bold bg-[var(--tb-white)] text-[var(--ink-on-white)] disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)] disabled:border disabled:border-[var(--line)]"
       >
         {busy ? 'Sending\u2026' : 'Send the link'}
       </button>
 
       <Link
         href="/staff/login"
-        className="block mt-6 text-[var(--step--1)] text-[var(--tb-violet)] underline underline-offset-4"
+        className="block mt-6 text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
       >
         Back to sign in
       </Link>

@@ -34,7 +34,7 @@ export default function LiveBanner({
       className="rounded-[var(--radius)] border border-[var(--line-strong)] p-4 mb-6"
       style={{ background: 'rgba(154, 35, 248, 0.10)' }}
     >
-      <p className="label !text-[var(--tb-violet)] mb-1">Live now</p>
+      <p className="label !text-[var(--ink)] mb-1">Live now</p>
       <p className="text-[var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
         {playersHolding} {playersHolding === 1 ? 'player is' : 'players are'} holding numbers.
         Day-to-day edits are fine; anything that changes the puzzle needs unlocking first.

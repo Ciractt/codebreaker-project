@@ -43,7 +43,7 @@ export default function ScanForm({ slug }: { slug: string }) {
         <div className="flex flex-col gap-3 mt-8">
           <Link
             href="/offers"
-            className="h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold flex items-center justify-center"
+            className="h-12 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold flex items-center justify-center"
           >
             Claim your free item
           </Link>
@@ -82,11 +82,11 @@ export default function ScanForm({ slug }: { slug: string }) {
         onKeyDown={(event) => {
           if (event.key === 'Enter' && email) submit();
         }}
-        className="w-full h-12 px-4 rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] placeholder:text-[var(--ink-dim)] mb-3"
+        className="w-full h-12 px-4 rounded-[var(--radius)] bg-black/20 border border-[var(--line)] text-[var(--ink)] placeholder:text-[var(--ink-dim)] mb-3"
       />
 
       {error && (
-        <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)] mb-3">
+        <p role="alert" className="notice mb-3">
           {error}
         </p>
       )}
@@ -95,7 +95,7 @@ export default function ScanForm({ slug }: { slug: string }) {
         type="button"
         onClick={submit}
         disabled={!email || status === 'sending'}
-        className="w-full h-12 rounded-[var(--radius)] font-bold transition-colors bg-[var(--tb-violet)] text-[var(--tb-white)] disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)] disabled:border disabled:border-[var(--line)]"
+        className="w-full h-12 rounded-[var(--radius)] font-bold transition-colors bg-[var(--tb-white)] text-[var(--ink-on-white)] disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)] disabled:border disabled:border-[var(--line)]"
       >
         {status === 'sending' ? 'Checking\u2026' : 'Get my numbers'}
       </button>

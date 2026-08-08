@@ -41,7 +41,7 @@ export default function HomePage() {
       <div className="flex gap-3">
         <Link
           href="/progress"
-          className="flex-1 h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold flex items-center justify-center"
+          className="flex-1 h-12 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold flex items-center justify-center"
         >
           Your numbers
         </Link>

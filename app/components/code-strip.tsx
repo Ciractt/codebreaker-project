@@ -40,6 +40,7 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
           : `${REMAINING[progress.totalLocations - progress.scannedCount] ?? ''} still out there.`}
       </p>
 
+      <div className="rounded-[var(--radius-card)] bg-[var(--ground-deepest)] p-4 mb-8">
       <ul className="grid grid-cols-8 gap-[5px] mb-2 list-none p-0 m-0">
         {SLOTS.map((slot) => {
           const digit = placed.get(slot);
@@ -49,7 +50,7 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
               className={
                 digit === undefined
                   ? 'aspect-[3/4] rounded-[var(--radius-slot)] border border-dashed border-[var(--slot-empty-border)] bg-[var(--slot-empty-bg)]'
-                  : 'aspect-[3/4] rounded-[var(--radius-slot)] bg-[var(--tb-violet)] flex items-center justify-center display text-[var(--step-1)]'
+                  : 'aspect-[3/4] rounded-[var(--radius-slot)] bg-[var(--slot-known-bg)] text-[var(--slot-known-ink)] flex items-center justify-center display text-[var(--step-1)]'
               }
             >
               {digit === undefined ? (
@@ -62,18 +63,19 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
         })}
       </ul>
 
-      <ul className="grid grid-cols-8 gap-[5px] mb-8 list-none p-0 m-0" aria-hidden="true">
+      <ul className="grid grid-cols-8 gap-[5px] list-none p-0 m-0" aria-hidden="true">
         {SLOTS.map((slot) => (
           <li
             key={slot}
             className={`text-center text-[var(--step--1)] ${
-              placed.has(slot) ? 'text-[var(--tb-violet)]' : 'text-[var(--ink-dim)]'
+              placed.has(slot) ? 'text-[var(--ink)]' : 'text-[var(--ink-dim)]'
             }`}
           >
             {slot}
           </li>
         ))}
       </ul>
+      </div>
 
       {progress.looseNumbers.length > 0 && (
         <section className="border-t border-[var(--line)] pt-5 mb-8">

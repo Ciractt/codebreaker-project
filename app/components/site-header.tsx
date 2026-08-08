@@ -9,7 +9,7 @@ import BrandMark from './brand-mark';
  */
 export default function SiteHeader() {
   return (
-    <header className="border-b border-[var(--line)]">
+    <header className="bg-[var(--ground-deep)] border-b border-[var(--line)]">
       <div className="mx-auto w-full max-w-md px-5 py-6 flex flex-col items-center gap-2">
         <Link
           href="/"

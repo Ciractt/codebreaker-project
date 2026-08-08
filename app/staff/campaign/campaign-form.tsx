@@ -16,7 +16,7 @@ function forInput(iso: string): string {
 }
 
 const field =
-  'w-full h-12 px-4 rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--line)] text-[var(--ink)] placeholder:text-[var(--ink-dim)]';
+  'w-full h-12 px-4 rounded-[var(--radius)] bg-black/20 border border-[var(--line)] text-[var(--ink)] placeholder:text-[var(--ink-dim)]';
 
 export default function CampaignForm({
   settings,
@@ -121,7 +121,7 @@ export default function CampaignForm({
             type="checkbox"
             checked={form.is_won}
             onChange={(e) => setForm({ ...form, is_won: e.target.checked })}
-            className="w-5 h-5 accent-[var(--tb-violet)]"
+            className="w-5 h-5 accent-[var(--tb-white)]"
           />
           <span>The safe has been opened</span>
         </label>
@@ -137,14 +137,14 @@ export default function CampaignForm({
               is_won: form.is_won,
             })
           }
-          className="h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+          className="h-12 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)]"
         >
           {busy ? 'Saving\u2026' : 'Save changes'}
         </button>
 
         {message && <p className="text-[var(--step--1)] text-[var(--ink-mute)]">{message}</p>}
         {error && (
-          <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)]">
+          <p role="alert" className="notice">
             {error}
           </p>
         )}
@@ -160,7 +160,7 @@ export default function CampaignForm({
           <button
             type="button"
             onClick={() => setShowCode((v) => !v)}
-            className="text-[var(--step--1)] text-[var(--tb-violet)] underline underline-offset-4"
+            className="text-[var(--step--1)] text-[var(--ink)] underline underline-offset-4"
           >
             {showCode ? 'Hide' : 'Show the code'}
           </button>
@@ -187,7 +187,7 @@ export default function CampaignForm({
               type="checkbox"
               checked={unlocked}
               onChange={(e) => setUnlocked(e.target.checked)}
-              className="w-5 h-5 mt-0.5 accent-[var(--tb-violet)] shrink-0"
+              className="w-5 h-5 mt-0.5 accent-[var(--tb-white)] shrink-0"
             />
             <span className="text-[var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
               The campaign is live. Tick to unlock rotating the code.
@@ -216,7 +216,7 @@ export default function CampaignForm({
           aria-modal="true"
           className="fixed inset-0 z-30 bg-black/70 flex items-end sm:items-center justify-center p-5"
         >
-          <div className="w-full max-w-md rounded-[var(--radius-card)] border border-[var(--line-strong)] bg-[var(--surface)] p-6">
+          <div className="w-full max-w-md rounded-[var(--radius-card)] border border-[var(--line-strong)] bg-[var(--ground-deep)] p-6">
             <h2 className="display text-[var(--step-1)] mb-3">Hold on</h2>
             <p className="text-[var(--step--1)] text-[var(--ink-mute)] mb-6 leading-relaxed">
               {confirm.message}
@@ -233,7 +233,7 @@ export default function CampaignForm({
                 type="button"
                 disabled={busy}
                 onClick={() => send({ ...confirm.payload, confirmDestructive: true })}
-                className="flex-1 h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold disabled:opacity-45"
+                className="flex-1 h-12 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold disabled:bg-[var(--surface)] disabled:text-[var(--ink-dim)]"
               >
                 Do it anyway
               </button>

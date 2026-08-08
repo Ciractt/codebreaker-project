@@ -75,7 +75,7 @@ export default async function StaffStatsPage() {
                   {row.codes_found} {row.codes_found === 1 ? 'code' : 'codes'}
                 </span>
                 <span
-                  className="h-6 rounded-sm bg-[var(--tb-violet)] min-w-[3px]"
+                  className="h-6 rounded-sm bg-[var(--tb-white)] min-w-[3px]"
                   style={{ width: `${(row.players / Math.max(1, totalPlayers)) * 100}%` }}
                 />
                 <span className="text-[var(--step--1)] text-[var(--ink-mute)] tabular-nums">
@@ -119,7 +119,7 @@ export default async function StaffStatsPage() {
             {daily.map((row) => (
               <li key={row.day} className="flex-1 flex flex-col items-center gap-2">
                 <span
-                  className="w-full rounded-t-sm bg-[var(--tb-violet)] min-h-[2px]"
+                  className="w-full rounded-t-sm bg-[var(--tb-white)] min-h-[2px]"
                   style={{ height: `${(row.scans / peak) * 100}%` }}
                   title={`${row.scans} scans`}
                 />

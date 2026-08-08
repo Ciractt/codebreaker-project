@@ -58,7 +58,7 @@ export default function TeamList({ team }: { team: Member[] }) {
                   onClick={() => setRole(member.user_id, role)}
                   className={`flex-1 h-10 rounded-[var(--radius)] label ${
                     member.role === role
-                      ? 'bg-[var(--tb-violet)] !text-[var(--tb-white)]'
+                      ? 'bg-[var(--tb-white)] !text-[var(--ink-on-white)]'
                       : 'border border-[var(--line-strong)]'
                   }`}
                 >
@@ -71,7 +71,7 @@ export default function TeamList({ team }: { team: Member[] }) {
       </ul>
 
       {error && (
-        <p role="alert" className="text-[var(--step--1)] text-[var(--tb-violet)] mt-4">
+        <p role="alert" className="notice mt-4">
           {error}
         </p>
       )}

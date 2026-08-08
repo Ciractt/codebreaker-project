@@ -30,7 +30,7 @@ export default function OfferImage({
       aria-hidden="true"
       className="w-full aspect-[16/9] rounded-[var(--radius)] mb-4 flex items-center justify-center overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, var(--tb-purple), var(--surface-2))`,
+        background: `linear-gradient(135deg, var(--ground-deepest), var(--tb-violet))`,
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}

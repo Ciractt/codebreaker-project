@@ -17,7 +17,7 @@ export default function BottomNav({ unusedOffers }: { unusedOffers: number }) {
   ];
 
   return (
-    <nav className="sticky bottom-0 z-20 bg-[var(--ground)]/92 backdrop-blur-sm border-t border-[var(--line)]">
+    <nav className="sticky bottom-0 z-20 bg-[var(--ground-deep)] border-t border-[var(--line)]">
       <ul className="mx-auto w-full max-w-md px-5 h-16 grid grid-cols-2 items-center list-none m-0 p-0">
         {tabs.map((tab) => {
           const active = pathname === tab.href;
@@ -27,14 +27,14 @@ export default function BottomNav({ unusedOffers }: { unusedOffers: number }) {
                 href={tab.href}
                 aria-current={active ? 'page' : undefined}
                 className={`h-full flex items-center justify-center gap-2 label ${
-                  active ? '!text-[var(--tb-violet)]' : ''
+                  active ? '!text-[var(--ink)]' : ''
                 }`}
               >
                 {tab.label}
                 {tab.href === '/offers' && unusedOffers > 0 && (
                   <span
                     aria-label={`${unusedOffers} unused`}
-                    className="w-1.5 h-1.5 rounded-full bg-[var(--tb-violet)]"
+                    className="w-1.5 h-1.5 rounded-full bg-[var(--tb-white)]"
                   />
                 )}
               </Link>
