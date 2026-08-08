@@ -17,7 +17,10 @@ export interface Progress {
 
 const SLOTS = [1, 2, 3, 4, 5, 6, 7, 8];
 
-const WORDS = ['None', 'One', 'Two', 'Three', 'Four'];
+// Numerals belong to the code. Everywhere else, counts are spelled out, so a
+// digit on this screen always means something.
+const WORDS = ['none', 'One', 'Two', 'Three', 'Four'];
+const REMAINING = ['none', 'One', 'Two', 'Three', 'Four'];
 
 export default function CodeStrip({ progress }: { progress: Progress }) {
   const placed = new Map(
@@ -26,19 +29,15 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
       .map((n) => [n.position as number, n.digit]),
   );
 
-  const latest = progress.reveals[progress.reveals.length - 1];
-
   return (
     <div>
-      <p className="label mb-4">Code breaker &middot; Darlington</p>
-
       <h1 className="display text-[var(--step-2)] mb-1">
-        {WORDS[progress.scannedCount] ?? progress.scannedCount} of {progress.totalLocations} found
+        {WORDS[progress.scannedCount] ?? progress.scannedCount} of four found
       </h1>
       <p className="text-[var(--ink-mute)] text-[var(--step--1)] mb-7">
         {progress.isComplete
-          ? 'That\u2019s all of them. The safe is in store.'
-          : `${progress.totalLocations - progress.scannedCount} to go.`}
+          ? 'That\u2019s all of them. The safe is in the restaurant.'
+          : `${REMAINING[progress.totalLocations - progress.scannedCount] ?? ''} still out there.`}
       </p>
 
       <ul className="grid grid-cols-8 gap-[5px] mb-2 list-none p-0 m-0">
@@ -95,17 +94,6 @@ export default function CodeStrip({ progress }: { progress: Progress }) {
         </section>
       )}
 
-      {latest && (
-        <section className="border-t border-[var(--line)] pt-5">
-          <h2 className="label mb-2">Yours to claim</h2>
-          <p className="display text-[var(--step-1)] mb-1">{latest.offerTitle}</p>
-          {latest.offerDescription && (
-            <p className="text-[var(--step--1)] text-[var(--ink-mute)]">
-              {latest.offerDescription}
-            </p>
-          )}
-        </section>
-      )}
     </div>
   );
 }

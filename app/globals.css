@@ -49,3 +49,14 @@ body {
   outline: 2px solid var(--tb-white);
   outline-offset: 2px;
 }
+
+/* Chrome paints autofilled inputs pale yellow, which on a purple ground looks
+   like a brand-yellow violation. Hold the field's own colours instead. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--surface) inset;
+  caret-color: var(--ink);
+  transition: background-color 9999s ease-in-out 0s;
+}
