@@ -1,9 +1,22 @@
 import { redirect } from 'next/navigation';
 import { getStaffClient, getStaffRole } from '@/lib/supabase/staff';
 import { getDailyScans, getFunnel, getLocationsReport, getOverview } from '@/lib/admin';
+import { getCampaignState, getRecentActivity } from '@/lib/campaign';
+import LiveBanner from './live-banner';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Stats | Code Breaker' };
+
+const ACTIONS: Record<string, string> = {
+  'location.update': 'Code edited',
+  'location.insert': 'Code added',
+  'location.delete': 'Code removed',
+  'campaign.update': 'Campaign settings changed',
+  'safe_code.rotated': 'Safe code rotated',
+  'staff.insert': 'Team member added',
+  'staff.update': 'Team member rank changed',
+  'staff.delete': 'Team member removed',
+};
 
 function Stat({ value, label }: { value: number | string; label: string }) {
   return (
@@ -19,11 +32,13 @@ export default async function StaffStatsPage() {
   if (!staff) redirect('/staff/login');
 
   const supabase = await getStaffClient();
-  const [overview, funnel, locations, daily] = await Promise.all([
+  const [overview, funnel, locations, daily, campaign, activity] = await Promise.all([
     getOverview(supabase),
     getFunnel(supabase),
     getLocationsReport(supabase),
     getDailyScans(supabase),
+    getCampaignState(supabase),
+    getRecentActivity(supabase, 12),
   ]);
 
   const peak = Math.max(1, ...daily.map((d) => d.scans));
@@ -31,7 +46,13 @@ export default async function StaffStatsPage() {
 
   return (
     <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
-      <h1 className="display text-[var(--step-2)] mb-6">How it&rsquo;s going</h1>
+      <h1 className="display text-[var(--step-2)] mb-5">How it&rsquo;s going</h1>
+
+      <LiveBanner
+        isLive={campaign?.isLive ?? false}
+        isWon={campaign?.isWon ?? false}
+        playersHolding={overview?.total_players ?? 0}
+      />
 
       <div className="grid grid-cols-2 gap-3 mb-8">
         <Stat value={totalPlayers} label="Players" />
@@ -104,6 +125,40 @@ export default async function StaffStatsPage() {
                 />
                 <span className="text-[var(--step--1)] text-[var(--ink-dim)] tabular-nums">
                   {new Date(row.day).getDate()}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className="mt-8">
+        <h2 className="label mb-3">What&rsquo;s been changed</h2>
+        {activity.length === 0 ? (
+          <p className="text-[var(--step--1)] text-[var(--ink-dim)]">Nothing yet.</p>
+        ) : (
+          <ul className="list-none p-0 m-0 flex flex-col gap-2">
+            {activity.map((entry) => (
+              <li
+                key={entry.id}
+                className="flex items-baseline justify-between gap-3 text-[var(--step--1)]"
+              >
+                <span className="text-[var(--ink-mute)]">
+                  {ACTIONS[entry.action] ?? entry.action}
+                  {typeof entry.detail?.location_name === 'string' && (
+                    <span className="text-[var(--ink-dim)]">
+                      {' '}
+                      &mdash; {entry.detail.location_name as string}
+                    </span>
+                  )}
+                </span>
+                <span className="text-[var(--ink-dim)] whitespace-nowrap tabular-nums">
+                  {new Date(entry.created_at).toLocaleString('en-GB', {
+                    day: 'numeric',
+                    month: 'short',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
                 </span>
               </li>
             ))}
