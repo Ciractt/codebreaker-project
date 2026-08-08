@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -79,6 +80,13 @@ export default function StaffLoginForm() {
       >
         {busy ? 'Signing in\u2026' : 'Sign in'}
       </button>
+
+      <Link
+        href="/staff/forgot"
+        className="block mt-6 text-[var(--step--1)] text-[var(--tb-violet)] underline underline-offset-4"
+      >
+        Forgotten your password?
+      </Link>
     </div>
   );
 }
