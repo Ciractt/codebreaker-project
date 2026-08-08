@@ -5,6 +5,7 @@ import OfferCard from '@/app/components/offer-card';
 import BottomNav from '@/app/components/bottom-nav';
 import EmptyState from '@/app/components/empty-state';
 import PromoSlot from '@/app/components/promo-slot';
+import CampaignNotice from '@/app/components/campaign-notice';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,6 +28,7 @@ export default async function OffersPage() {
   return (
     <>
       <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
+        <CampaignNotice />
         <p className="label mb-4">Your offers</p>
         <h1 className="display text-[length:var(--step-2)] mb-2">
           {offers.length === 1 ? 'One thing' : `${offers.length} things`} to claim

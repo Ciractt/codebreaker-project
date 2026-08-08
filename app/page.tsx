@@ -1,9 +1,18 @@
 import Link from 'next/link';
 import PromoSlot from './components/promo-slot';
+import CampaignNotice from './components/campaign-notice';
+import { getAdminClient } from '@/lib/supabase/admin';
+import { getCampaignState } from '@/lib/campaign';
 
-export default function HomePage() {
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage() {
+  const campaign = await getCampaignState(getAdminClient());
+  const won = campaign?.isWon ?? false;
+
   return (
     <main className="flex-1 px-5 py-10 mx-auto w-full max-w-md">
+      <CampaignNotice />
       <h1 className="display text-[length:var(--step-3)] mb-4">
         Eight numbers.
         <br />
@@ -32,7 +41,9 @@ export default function HomePage() {
         <li className="border-t border-[var(--line)] pt-4">
           <p className="label mb-1">The safe</p>
           <p className="text-[length:var(--step--1)] text-[var(--ink-mute)]">
-            It&rsquo;s in the restaurant. Anyone can try it. Only one person opens it.
+            {won
+              ? 'Opened. One person got there first, which was always going to be how it ended.'
+              : 'It\u2019s in the restaurant. Anyone can try it. Only one person opens it.'}
           </p>
         </li>
       </ol>

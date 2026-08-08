@@ -6,6 +6,7 @@ import CodeStrip from '@/app/components/code-strip';
 import BottomNav from '@/app/components/bottom-nav';
 import EmptyState from '@/app/components/empty-state';
 import PromoSlot from '@/app/components/promo-slot';
+import CampaignNotice from '@/app/components/campaign-notice';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,6 +32,7 @@ export default async function ProgressPage() {
   return (
     <>
       <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
+        <CampaignNotice />
         <p className="label mb-4">Your numbers</p>
         <CodeStrip progress={progress} />
         <PromoSlot />

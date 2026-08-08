@@ -6,6 +6,7 @@ export interface CampaignState {
   startsAt: string | null;
   endsAt: string | null;
   isLive: boolean;
+  isClosed: boolean;
   isWon: boolean;
 }
 
@@ -33,6 +34,7 @@ export async function getCampaignState(
     startsAt: data.starts_at as string | null,
     endsAt: data.ends_at as string | null,
     isLive: starts !== null && ends !== null && now >= starts && now <= ends,
+    isClosed: ends !== null && now > ends,
     isWon: Boolean(data.is_won),
   };
 }
