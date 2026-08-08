@@ -5,10 +5,15 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import type { StaffRole } from '@/lib/supabase/staff';
 
+/** Pages that authenticate rather than administer: no chrome, no tabs. */
+const AUTH_PATHS = ['/staff/login', '/staff/forgot', '/staff/reset'];
+
 export default function StaffNav({ role, email }: { role: StaffRole; email: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+
+  if (AUTH_PATHS.includes(pathname)) return null;
 
   const tabs = [
     { href: '/staff', label: 'Stats', superOnly: false },
@@ -29,18 +34,20 @@ export default function StaffNav({ role, email }: { role: StaffRole; email: stri
   return (
     <div className="border-b border-[var(--line)]">
       <div className="admin-shell pt-5">
-        <div className="flex items-baseline justify-between mb-4">
-          <p className="label">{role === 'super_admin' ? 'Super admin' : 'Admin'}</p>
+        <div className="flex items-baseline justify-between gap-4 mb-4">
+          <p className="label truncate">
+            {role === 'super_admin' ? 'Super admin' : 'Admin'}
+            <span className="!text-[var(--ink-dim)]"> &middot; {email}</span>
+          </p>
           <button
             type="button"
             onClick={signOut}
             disabled={busy}
-            className="text-[length:var(--step--1)] text-[var(--ink-dim)] underline underline-offset-4"
+            className="text-[length:var(--step--1)] text-[var(--ink-dim)] underline underline-offset-4 shrink-0"
           >
             Sign out
           </button>
         </div>
-        <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mb-4">{email}</p>
         <nav className="flex gap-4 md:gap-6 -mb-px overflow-x-auto">
           {tabs.map((tab) => {
             const active = pathname === tab.href || pathname.startsWith(`${tab.href}/`);
