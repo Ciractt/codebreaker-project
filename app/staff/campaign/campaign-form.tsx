@@ -23,11 +23,13 @@ export default function CampaignForm({
   safeCode,
   rotatedAt,
   affected,
+  isLive,
 }: {
   settings: Settings | null;
   safeCode: string | null;
   rotatedAt: string | null;
   affected: number;
+  isLive: boolean;
 }) {
   const router = useRouter();
   const [form, setForm] = useState({
@@ -42,6 +44,7 @@ export default function CampaignForm({
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [confirm, setConfirm] = useState<{ message: string; payload: object } | null>(null);
+  const [unlocked, setUnlocked] = useState(!isLive);
 
   async function send(payload: object) {
     setBusy(true);
@@ -178,11 +181,25 @@ export default function CampaignForm({
           value={newCode}
           onChange={(e) => setNewCode(e.target.value.replace(/[^1-9]/g, ''))}
         />
+        {isLive && (
+          <label className="flex items-start gap-3 mb-4">
+            <input
+              type="checkbox"
+              checked={unlocked}
+              onChange={(e) => setUnlocked(e.target.checked)}
+              className="w-5 h-5 mt-0.5 accent-[var(--tb-violet)] shrink-0"
+            />
+            <span className="text-[var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
+              The campaign is live. Tick to unlock rotating the code.
+            </span>
+          </label>
+        )}
+
         <button
           type="button"
-          disabled={busy || newCode.length !== 8}
+          disabled={busy || newCode.length !== 8 || !unlocked}
           onClick={() => send({ safe_code: newCode })}
-          className="w-full h-12 rounded-[var(--radius)] border border-[var(--line-strong)] text-[var(--ink)] font-bold disabled:opacity-40"
+          className="w-full h-12 rounded-[var(--radius)] border border-[var(--line-strong)] text-[var(--ink)] font-bold disabled:opacity-35"
         >
           Rotate the code
         </button>

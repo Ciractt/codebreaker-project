@@ -1,6 +1,7 @@
 import { notFound, redirect } from 'next/navigation';
 import { getStaffClient, getStaffRole } from '@/lib/supabase/staff';
 import { getImpact } from '@/lib/admin';
+import { getCampaignState } from '@/lib/campaign';
 import LocationForm from './location-form';
 
 export const dynamic = 'force-dynamic';
@@ -21,12 +22,20 @@ export default async function LocationPage({ params }: { params: Promise<{ id: s
 
   if (!location) notFound();
 
-  const affected = await getImpact(supabase, id);
+  const [affected, campaign] = await Promise.all([
+    getImpact(supabase, id),
+    getCampaignState(supabase),
+  ]);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? '';
 
   return (
     <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
-      <LocationForm location={location} affected={affected} siteUrl={siteUrl} />
+      <LocationForm
+        location={location}
+        affected={affected}
+        siteUrl={siteUrl}
+        isLive={campaign?.isLive ?? false}
+      />
     </main>
   );
 }
