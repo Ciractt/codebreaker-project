@@ -62,3 +62,24 @@ export async function getImpact(
   });
   return data?.[0]?.affected_players ?? 0;
 }
+
+export async function getHourlyScans(
+  supabase: SupabaseClient,
+): Promise<{ hour: number; scans: number }[]> {
+  const { data } = await supabase.rpc('admin_hourly_scans');
+  return data ?? [];
+}
+
+export interface Takeup {
+  location_id: string;
+  day_number: number;
+  location_name: string;
+  offer_title: string;
+  scans: number;
+  claimed: number;
+}
+
+export async function getOfferTakeup(supabase: SupabaseClient): Promise<Takeup[]> {
+  const { data } = await supabase.rpc('admin_offer_takeup');
+  return data ?? [];
+}

@@ -43,7 +43,7 @@ export default function TeamList({ team }: { team: Member[] }) {
         {team.map((member) => (
           <li
             key={member.user_id}
-            className="rounded-[var(--radius)] border border-[var(--line)] p-4"
+            className="rounded-[var(--radius)] p-4" style={{ background: 'var(--card)' }}
           >
             <p className="mb-1">{member.display_name ?? 'Unnamed'}</p>
             <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mb-3">

@@ -125,7 +125,7 @@ export default function PromoManager({ promos }: { promos: Promo[] }) {
         {promos.map((promo) => (
           <li
             key={promo.id}
-            className="rounded-[var(--radius-card)] border border-[var(--line)] p-4"
+            className="rounded-[var(--radius-card)] p-4" style={{ background: 'var(--card)' }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

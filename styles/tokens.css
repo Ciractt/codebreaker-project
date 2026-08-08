@@ -34,6 +34,17 @@
   --ink-on-white-dim: rgba(17, 3, 33, 0.50);
   --line-on-white: rgba(17, 3, 33, 0.12);
 
+  /* --- Admin data ------------------------------------------------------
+     Yellow means completion and nothing else — people who found all four,
+     and the safe being opened. Everything else is violet at varying weight,
+     so a chart reads without a key. */
+  --data-strong: var(--tb-violet);
+  --data-mid: rgba(154, 35, 248, 0.75);
+  --data-soft: rgba(154, 35, 248, 0.45);
+  --data-done: var(--tb-yellow);
+  --data-track: rgba(0, 0, 0, 0.22);
+  --card: rgba(0, 0, 0, 0.18);
+
   /* --- Code strip -----------------------------------------------------
      A known digit is solid white on the deep ground: filled reads as
      certain, empty reads as missing. Violet would sit too close to the

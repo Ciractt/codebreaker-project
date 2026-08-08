@@ -31,7 +31,7 @@ export default async function LocationsPage() {
           <li key={location.id}>
             <Link
               href={`/staff/locations/${location.id}`}
-              className="block rounded-[var(--radius)] border border-[var(--line)] p-4"
+              className="block rounded-[var(--radius)] p-4" style={{ background: 'var(--card)' }}
             >
               <div className="flex items-baseline justify-between gap-3 mb-1">
                 <p className="label">Day {location.day_number}</p>

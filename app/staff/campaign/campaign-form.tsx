@@ -153,7 +153,7 @@ export default function CampaignForm({
       <section className="pt-6 border-t border-[var(--line)] admin-form">
         <h2 className="label mb-3">The safe code</h2>
 
-        <div className="rounded-[var(--radius)] border border-[var(--line)] p-4 mb-5">
+        <div className="rounded-[var(--radius)] p-4 mb-5" style={{ background: 'var(--card)' }}>
           <p className="display text-[length:var(--step-2)] tracking-[0.14em] mb-3 tabular-nums">
             {showCode ? (safeCode ?? 'not set') : '\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022'}
           </p>
