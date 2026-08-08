@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import CodeStrip, { type Progress } from '@/app/components/code-strip';
 
@@ -30,13 +31,31 @@ export default function ScanForm({ slug }: { slug: string }) {
       setProgress(payload.progress);
       setStatus('done');
     } catch {
-      setError('No connection. Check your signal and try again.');
+      setError('That didn\u2019t save. Try again in a moment.');
       setStatus('idle');
     }
   }
 
   if (status === 'done' && progress) {
-    return <CodeStrip progress={progress} />;
+    return (
+      <div>
+        <CodeStrip progress={progress} />
+        <div className="flex flex-col gap-3 mt-8">
+          <Link
+            href="/offers"
+            className="h-12 rounded-[var(--radius)] bg-[var(--tb-violet)] text-[var(--tb-white)] font-bold flex items-center justify-center"
+          >
+            Claim your free item
+          </Link>
+          <Link
+            href="/progress"
+            className="h-12 rounded-[var(--radius)] border border-[var(--line-strong)] text-[var(--ink)] font-bold flex items-center justify-center"
+          >
+            Your numbers
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -1,8 +1,10 @@
-import Link from 'next/link';
 import { getAdminClient } from '@/lib/supabase/admin';
 import { getParticipantProgress } from '@/lib/code';
+import { getOffers } from '@/lib/offers';
 import { readSession } from '@/lib/session';
 import CodeStrip from '@/app/components/code-strip';
+import BottomNav from '@/app/components/bottom-nav';
+import EmptyState from '@/app/components/empty-state';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,27 +13,27 @@ export default async function ProgressPage() {
 
   if (!participantId) {
     return (
-      <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
-        <p className="label mb-4">Your numbers</p>
-        <h1 className="display text-[var(--step-2)] mb-3">Nothing yet</h1>
-        <p className="text-[var(--ink-mute)]">
-          Find one of the four codes around Darlington to start.
-        </p>
-      </main>
+      <EmptyState
+        eyebrow="Your numbers"
+        heading="Nothing yet"
+        body="Find one of the four codes around Darlington to start."
+      />
     );
   }
 
-  const progress = await getParticipantProgress(getAdminClient(), participantId);
+  const supabase = getAdminClient();
+  const [progress, offers] = await Promise.all([
+    getParticipantProgress(supabase, participantId),
+    getOffers(supabase, participantId),
+  ]);
 
   return (
-    <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
-      <CodeStrip progress={progress} />
-      <Link
-        href="/offers"
-        className="block mt-8 text-[var(--step--1)] text-[var(--tb-violet)] underline underline-offset-4"
-      >
-        Your offers
-      </Link>
-    </main>
+    <>
+      <main className="flex-1 px-5 py-8 mx-auto w-full max-w-md">
+        <p className="label mb-4">Your numbers</p>
+        <CodeStrip progress={progress} />
+      </main>
+      <BottomNav unusedOffers={offers.filter((offer) => !offer.redeemedAt).length} />
+    </>
   );
 }
