@@ -28,10 +28,10 @@ export default async function QrPage() {
   );
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md print:max-w-none">
+    <main className="admin-shell flex-1 py-7 print:max-w-none">
       <div className="print:hidden">
         <h1 className="display text-[length:var(--step-2)] mb-2">QR codes</h1>
-        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-4 leading-relaxed">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-4 leading-relaxed max-w-[60ch]">
           Generated live from each code&rsquo;s link, so these are always current. Change a link
           and the old print is dead — regenerate before sending anything to a printer.
         </p>
@@ -44,10 +44,10 @@ export default async function QrPage() {
           </p>
         )}
 
-        <PrintButton />
+        <div className="md:max-w-xs"><PrintButton /></div>
       </div>
 
-      <ul className="list-none p-0 m-0 flex flex-col gap-6 mt-7 print:gap-0">
+      <ul className="list-none p-0 m-0 flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-4 mt-7 print:flex print:flex-col print:gap-0">
         {codes.map((code) => (
           <li
             key={code.id}
@@ -75,10 +75,33 @@ export default async function QrPage() {
               {code.url}
             </p>
 
+            <a
+              href={code.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-11 mb-2 rounded-[var(--radius)] bg-[var(--tb-purple)] text-[var(--tb-white)] font-bold flex items-center justify-center gap-2 print:hidden"
+            >
+              Open the scan page
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M7 17 17 7" />
+                <path d="M8 7h9v9" />
+              </svg>
+            </a>
+
             <div className="grid grid-cols-2 gap-2 print:hidden">
               <a
                 href={`/api/staff/qr?id=${code.id}&format=svg&style=purple`}
-                className="h-11 rounded-[var(--radius)] bg-[var(--tb-purple)] text-[var(--tb-white)] font-bold flex items-center justify-center label !text-[var(--tb-white)]"
+                className="h-11 rounded-[var(--radius)] border border-[var(--line-on-white)] text-[var(--ink-on-white)] flex items-center justify-center label !text-[var(--ink-on-white)]"
               >
                 SVG purple
               </a>
@@ -107,7 +130,7 @@ export default async function QrPage() {
 
       <section className="mt-10 pt-6 border-t border-[var(--line)] print:hidden">
         <h2 className="label mb-3">Before it goes to print</h2>
-        <ul className="list-disc pl-5 flex flex-col gap-2 text-[length:var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
+        <ul className="list-disc pl-5 flex flex-col gap-2 max-w-[70ch] text-[length:var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
           <li>
             Send the SVG, not the PNG. It stays sharp at any size; the PNG is there for slide
             decks and WhatsApp.
@@ -125,6 +148,11 @@ export default async function QrPage() {
             people scan from a couple of metres.
           </li>
           <li>Scan every printed proof with a real phone before the run. Every one.</li>
+          <li>
+            Opening a scan page from here behaves exactly like a customer scanning it. Put an
+            email in and you create a real participant and a real offer, which will show in the
+            stats &mdash; use a throwaway address when testing.
+          </li>
         </ul>
       </section>
     </main>

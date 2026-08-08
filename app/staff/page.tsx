@@ -45,7 +45,7 @@ export default async function StaffStatsPage() {
   const totalPlayers = overview?.total_players ?? 0;
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
+    <main className="admin-shell flex-1 py-7">
       <h1 className="display text-[length:var(--step-2)] mb-5">How it&rsquo;s going</h1>
 
       <LiveBanner
@@ -54,7 +54,7 @@ export default async function StaffStatsPage() {
         playersHolding={overview?.total_players ?? 0}
       />
 
-      <div className="grid grid-cols-2 gap-3 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
         <Stat value={totalPlayers} label="Players" />
         <Stat value={overview?.active_players_24h ?? 0} label="Active today" />
         <Stat value={overview?.total_scans ?? 0} label="Codes scanned" />
@@ -63,6 +63,7 @@ export default async function StaffStatsPage() {
         <Stat value={overview?.offers_outstanding ?? 0} label="Offers waiting" />
       </div>
 
+      <div className="md:grid md:grid-cols-2 md:gap-10 md:items-start">
       <section className="mb-8">
         <h2 className="label mb-3">How far people get</h2>
         {funnel.length === 0 ? (
@@ -165,6 +166,7 @@ export default async function StaffStatsPage() {
           </ul>
         )}
       </section>
+      </div>
     </main>
   );
 }

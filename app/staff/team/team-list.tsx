@@ -39,7 +39,7 @@ export default function TeamList({ team }: { team: Member[] }) {
 
   return (
     <div>
-      <ul className="list-none p-0 m-0 flex flex-col gap-3">
+      <ul className="list-none p-0 m-0 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
         {team.map((member) => (
           <li
             key={member.user_id}

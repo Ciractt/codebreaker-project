@@ -31,7 +31,7 @@ export default async function LocationPage({ params }: { params: Promise<{ id: s
   const qrPreview = await qrDataUri(scanUrl(location.slug as string, siteUrl), 'purple');
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
+    <main className="admin-shell flex-1 py-7">
       <LocationForm
         location={location}
         affected={affected}

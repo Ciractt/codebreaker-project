@@ -82,7 +82,7 @@ export default function CampaignForm({
     <div>
       <h1 className="display text-[length:var(--step-2)] mb-7">Campaign</h1>
 
-      <div className="flex flex-col gap-5 mb-10">
+      <div className="flex flex-col gap-5 mb-10 admin-form">
         <div>
           <label htmlFor="name" className="label block mb-2">Name</label>
           <input
@@ -150,7 +150,7 @@ export default function CampaignForm({
         )}
       </div>
 
-      <section className="pt-6 border-t border-[var(--line)]">
+      <section className="pt-6 border-t border-[var(--line)] admin-form">
         <h2 className="label mb-3">The safe code</h2>
 
         <div className="rounded-[var(--radius)] border border-[var(--line)] p-4 mb-5">

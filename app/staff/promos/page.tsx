@@ -15,9 +15,9 @@ export default async function PromosPage() {
   const promos = await getAllPromos(supabase);
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
+    <main className="admin-shell flex-1 py-7">
       <h1 className="display text-[length:var(--step-2)] mb-2">Promo banner</h1>
-      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7 leading-relaxed">
+      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7 leading-relaxed max-w-[60ch]">
         Shows beneath the content on the player pages. The first active one is used, so switching
         banners is a matter of turning one off and another on.
       </p>

@@ -115,6 +115,7 @@ export default function LocationForm({
         </button>
       </section>
 
+      <div className="md:grid md:grid-cols-2 md:gap-12 md:items-start">
       <div className="flex flex-col gap-5">
         <div>
           <label htmlFor="name" className="label block mb-2">Where it is</label>
@@ -218,7 +219,7 @@ export default function LocationForm({
         )}
       </div>
 
-      <section className="mt-10 pt-6 border-t border-[var(--line)]">
+      <section className="mt-10 pt-6 border-t border-[var(--line)] md:mt-0 md:pt-0 md:border-t-0">
         <h2 className="label mb-3">The QR code</h2>
 
         <div className="rounded-[var(--radius)] bg-[var(--surface-solid)] p-4 mb-4">
@@ -241,9 +242,32 @@ export default function LocationForm({
           </a>
         </div>
 
-        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] break-all mb-4">
+        <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] break-all mb-3">
           {siteUrl}/s/{location.slug}
         </p>
+
+        <a
+          href={`${siteUrl}/s/${location.slug}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-12 mb-5 rounded-[var(--radius)] bg-[var(--tb-white)] text-[var(--ink-on-white)] font-bold flex items-center justify-center gap-2"
+        >
+          Open the scan page
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M7 17 17 7" />
+            <path d="M8 7h9v9" />
+          </svg>
+        </a>
         {isLive && (
           <label className="flex items-start gap-3 mb-4">
             <input
@@ -271,6 +295,7 @@ export default function LocationForm({
           would need to reprint before anyone could scan it again.
         </p>
       </section>
+      </div>
 
       {confirm && (
         <div

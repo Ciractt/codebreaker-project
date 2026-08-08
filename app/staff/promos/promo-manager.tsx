@@ -61,7 +61,7 @@ export default function PromoManager({ promos }: { promos: Promo[] }) {
   }
 
   const form = (onSave: () => void, onCancel: () => void) => (
-    <div className="flex flex-col gap-4 mt-4">
+    <div className="flex flex-col gap-4 mt-4 admin-form">
       <div>
         <label className="label block mb-2">Title, and alt text</label>
         <input
@@ -121,7 +121,7 @@ export default function PromoManager({ promos }: { promos: Promo[] }) {
 
   return (
     <div>
-      <ul className="list-none p-0 m-0 flex flex-col gap-4">
+      <ul className="list-none p-0 m-0 flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-5 md:items-start">
         {promos.map((promo) => (
           <li
             key={promo.id}
@@ -216,7 +216,7 @@ export default function PromoManager({ promos }: { promos: Promo[] }) {
             setDraft(EMPTY);
             setAdding(true);
           }}
-          className="mt-6 w-full h-12 rounded-[var(--radius)] border border-[var(--line-strong)] text-[var(--ink)] font-bold"
+          className="mt-6 w-full md:w-auto md:px-8 h-12 rounded-[var(--radius)] border border-[var(--line-strong)] text-[var(--ink)] font-bold"
         >
           Add a banner
         </button>

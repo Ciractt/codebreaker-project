@@ -19,14 +19,14 @@ export default async function LocationsPage() {
     .order('sort_order');
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
+    <main className="admin-shell flex-1 py-7">
       <h1 className="display text-[length:var(--step-2)] mb-2">The four codes</h1>
-      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7">
+      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7 max-w-[var(--measure)]">
         Between them they cover all eight positions. Only the first one tells players where its
         numbers sit.
       </p>
 
-      <ul className="list-none p-0 m-0 flex flex-col gap-3">
+      <ul className="list-none p-0 m-0 flex flex-col gap-3 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-4">
         {(locations ?? []).map((location) => (
           <li key={location.id}>
             <Link

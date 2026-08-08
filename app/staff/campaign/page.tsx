@@ -22,7 +22,7 @@ export default async function CampaignPage() {
   ]);
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
+    <main className="admin-shell flex-1 py-7">
       <CampaignForm
         settings={settings}
         safeCode={secrets?.safe_code ?? null}

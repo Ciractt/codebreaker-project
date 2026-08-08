@@ -17,16 +17,16 @@ export default async function TeamPage() {
     .order('created_at');
 
   return (
-    <main className="flex-1 px-5 py-7 mx-auto w-full max-w-md">
+    <main className="admin-shell flex-1 py-7">
       <h1 className="display text-[length:var(--step-2)] mb-2">Team</h1>
-      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7 leading-relaxed">
+      <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] mb-7 leading-relaxed max-w-[60ch]">
         Admins see the stats. Super admins can change the codes, the campaign and the safe code,
         and can see player emails.
       </p>
 
       <TeamList team={team ?? []} />
 
-      <section className="mt-10 pt-6 border-t border-[var(--line)]">
+      <section className="mt-10 pt-6 border-t border-[var(--line)] max-w-[60ch]">
         <h2 className="label mb-3">Adding someone</h2>
         <p className="text-[length:var(--step--1)] text-[var(--ink-mute)] leading-relaxed">
           There&rsquo;s no self-signup, so new accounts are created in Supabase under

@@ -28,7 +28,7 @@ export default function StaffNav({ role, email }: { role: StaffRole; email: stri
 
   return (
     <div className="border-b border-[var(--line)]">
-      <div className="mx-auto w-full max-w-md px-5 pt-5">
+      <div className="admin-shell pt-5">
         <div className="flex items-baseline justify-between mb-4">
           <p className="label">{role === 'super_admin' ? 'Super admin' : 'Admin'}</p>
           <button
@@ -41,7 +41,7 @@ export default function StaffNav({ role, email }: { role: StaffRole; email: stri
           </button>
         </div>
         <p className="text-[length:var(--step--1)] text-[var(--ink-dim)] mb-4">{email}</p>
-        <nav className="flex gap-4 -mb-px overflow-x-auto">
+        <nav className="flex gap-4 md:gap-6 -mb-px overflow-x-auto">
           {tabs.map((tab) => {
             const active = pathname === tab.href || pathname.startsWith(`${tab.href}/`);
             return (

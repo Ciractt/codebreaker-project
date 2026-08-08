@@ -121,6 +121,30 @@ input:-webkit-autofill:focus {
   transition: background-color 9999s ease-in-out 0s;
 }
 
+/* --- Admin layout -------------------------------------------------------
+   The staff side gets used on a laptop in the office and on a phone in the
+   store, so it needs both. The player pages deliberately do not — a QR code
+   in the street is a phone, always. */
+
+.admin-shell {
+  width: 100%;
+  max-width: 28rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .admin-shell {
+    max-width: 68rem;
+    padding-inline: 2rem;
+  }
+}
+
+/* Forms stay readable rather than stretching to the full container. */
+.admin-form {
+  max-width: 30rem;
+}
+
 /* --- Print ---------------------------------------------------------------
    The whole site is white on purple, which on paper is a waste of toner and
    an unscannable QR. Printing is only ever used for the QR sheet, so force
