@@ -1,15 +1,16 @@
 import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { REDEMPTION_WINDOW_MINUTES } from './campaign-constants';
 
-/**
- * How long the offer stays on screen once the customer activates it.
- *
- * There is no staff confirmation step — a new store opening is too busy for a
- * two-sided flow. Activation IS redemption: one tap, one use, then it is gone
- * whether or not they reached the till. The live countdown is what staff check,
- * because a screenshot does not tick.
- */
-export const REDEMPTION_WINDOW_MINUTES = 10;
+export { REDEMPTION_WINDOW_MINUTES };
+
+// The window itself lives in campaign-constants so the countdown bar, which is
+// a client component, can read it without dragging server-only across.
+//
+// There is no staff confirmation step — a new store opening is too busy for a
+// two-sided flow. Activation IS redemption: one tap, one use, then it is gone
+// whether or not they reached the till. The live countdown is what staff check,
+// because a screenshot does not tick.
 
 export interface Offer {
   scanId: string;

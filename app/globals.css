@@ -150,6 +150,12 @@ input:-webkit-autofill:focus {
    an unscannable QR. Printing is only ever used for the QR sheet, so force
    black on white and drop the chrome. */
 
+@media (prefers-reduced-motion: reduce) {
+  [role='progressbar'] > * {
+    transition: none !important;
+  }
+}
+
 @media print {
   html,
   body {

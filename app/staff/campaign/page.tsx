@@ -3,6 +3,7 @@ import { getStaffClient, getStaffRole } from '@/lib/supabase/staff';
 import { getImpact } from '@/lib/admin';
 import { getCampaignState } from '@/lib/campaign';
 import CampaignForm from './campaign-form';
+import ResetPanel from './reset-panel';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Campaign | Code Breaker' };
@@ -30,6 +31,8 @@ export default async function CampaignPage() {
         affected={affected}
         isLive={campaign?.isLive ?? false}
       />
+
+      <ResetPanel isLive={campaign?.isLive ?? false} players={affected} />
     </main>
   );
 }

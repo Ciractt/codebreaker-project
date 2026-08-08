@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { REDEMPTION_WINDOW_MINUTES } from '@/lib/campaign-constants';
 import type { Offer } from '@/lib/offers';
 import OfferImage from './offer-image';
 
@@ -62,6 +63,12 @@ export default function OfferCard({ offer }: { offer: Offer }) {
       : 0;
 
   const running = window !== null && now !== null && left > 0;
+
+  // The bar drains over the full window. Transitioning width by a second means
+  // it slides rather than stepping once a second, which reads as time passing
+  // instead of a clock ticking.
+  const total = REDEMPTION_WINDOW_MINUTES * 60;
+  const remaining = Math.min(100, Math.max(0, (left / total) * 100));
   const spent = window !== null && now !== null && left === 0;
 
   return (
@@ -96,7 +103,27 @@ export default function OfferCard({ offer }: { offer: Offer }) {
             >
               {clock(left)}
             </p>
-            <p className="label !text-[var(--ink-on-white-dim)] mt-2 mb-2">
+            <div
+              className="h-2 w-full rounded-full overflow-hidden mt-3"
+              style={{ background: 'var(--line-on-white)' }}
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={total}
+              aria-valuenow={left}
+              aria-label="Time left on this offer"
+            >
+              <div
+                className="h-full rounded-full"
+                style={{
+                  width: `${remaining}%`,
+                  background:
+                    left <= 60 ? 'var(--tb-violet)' : 'var(--tb-purple)',
+                  transition: 'width 1s linear, background-color 400ms ease',
+                }}
+              />
+            </div>
+
+            <p className="label !text-[var(--ink-on-white-dim)] mt-3 mb-2">
               Show this screen to the team
             </p>
             <p className="text-[length:var(--step--1)] text-[var(--ink-on-white-body)]">
