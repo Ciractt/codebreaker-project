@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { gtStandard, gtCondensed, gtExpanded } from './fonts';
 import SiteHeader from './components/site-header';
-import SiteFooter from './components/site-footer';
+import LegalBar from './components/legal-bar';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="min-h-full flex flex-col">
         <SiteHeader />
         {children}
-        <SiteFooter />
+        <LegalBar />
       </body>
     </html>
   );

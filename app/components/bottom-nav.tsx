@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation';
  * Two tabs, because there are exactly two things a player owns: the numbers
  * they've collected and the food they've earned.
  *
- * Fixed rather than sticky. The footer sits after this in the layout, so a
- * sticky bar came to rest above it in the middle of a short page. The spacer
- * keeps the footer reachable underneath.
+ * Fixed rather than sticky, and offset by the height of the legal strip that
+ * sits beneath it. Each bar contributes its own spacer so page content always
+ * clears both.
  */
 export default function BottomNav({ unusedOffers }: { unusedOffers: number }) {
   const pathname = usePathname();
@@ -21,10 +21,9 @@ export default function BottomNav({ unusedOffers }: { unusedOffers: number }) {
 
   return (
     <>
-      <div aria-hidden="true" className="h-20" />
+      <div aria-hidden="true" className="h-16" />
       <nav
-        className="fixed bottom-0 left-0 right-0 z-20 bg-[var(--ground-deepest)] border-t border-[var(--line)]"
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        className="fixed bottom-9 left-0 right-0 z-20 bg-[var(--ground-deepest)] border-t border-[var(--line)]"
       >
         <ul className="mx-auto w-full max-w-md px-5 h-16 grid grid-cols-2 items-stretch list-none m-0 p-0">
           {tabs.map((tab) => {
