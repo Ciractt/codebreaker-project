@@ -92,7 +92,7 @@ insert into locations (
 select
   m.day_number,
   m.loc_index::smallint,
-  encode(gen_random_bytes(8), 'hex'),        -- 16 hex chars, unguessable
+  encode(extensions.gen_random_bytes(8), 'hex'),       -- 16 hex chars, unguessable
   m.location_name,
   m.is_in_store,
   a.positions,
