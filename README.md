@@ -74,6 +74,7 @@ public/offers/baja-blast.jpg
 public/offers/crunchy-taco.jpg
 public/offers/cinnamon-twists.jpg
 public/offers/churros.jpg
+public/promos/live-mas-club.jpg
 ```
 
 Missing brand images degrade rather than fail - the header falls back to a text

@@ -4,6 +4,7 @@ import { readSession } from '@/lib/session';
 import OfferCard from '@/app/components/offer-card';
 import BottomNav from '@/app/components/bottom-nav';
 import EmptyState from '@/app/components/empty-state';
+import PromoSlot from '@/app/components/promo-slot';
 
 export const dynamic = 'force-dynamic';
 
@@ -41,6 +42,8 @@ export default async function OffersPage() {
             </li>
           ))}
         </ul>
+
+        <PromoSlot />
       </main>
       <BottomNav unusedOffers={unused} />
     </>

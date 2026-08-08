@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PromoSlot from './components/promo-slot';
 
 export default function HomePage() {
   return (
@@ -50,6 +51,8 @@ export default function HomePage() {
           Your offers
         </Link>
       </div>
+
+      <PromoSlot />
     </main>
   );
 }
